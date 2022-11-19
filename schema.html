@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="tr" class="h-100">
+  <head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-175557655-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-175557655-1');
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Açık Eğitim Kaynakları (AEK) için Üst Veri Modeli Tasarımı">
+    <meta name="author" content="Orçun Madran">
+    <title>Açık Ders Projesi · Üst Veri Şeması</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+
+    <!-- Custom js for this template -->
+    <script src="js/mainmenu.js"></script>
+
+  </head>
+  <body class="d-flex flex-column h-100">
+    
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">ADN</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <script>for (index in mainMenu) {
+            document.write('<li className="nav-item"><a class="nav-link" target='+mainMenu[index][2]+' href='+mainMenu[index][1]+'>'+mainMenu[index][0]+'</a></li>');
+          }</script>
+        </ul>
+          <script>document.write(searchForm)</script>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-5">AEK Üst Veri Şeması</h1>
+    <p class="lead">Proje kapsamında geliştirilen açık eğitim kaynakları üst veri şeması:</p>
+    <div class="table-responsive-sm">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th class="text-nowrap" scope="col">No</th>
+          <th class="text-nowrap" scope="col">Source</th>
+          <th class="text-nowrap" scope="col">Term Name</th>
+          <th class="text-nowrap" scope="col">Definition</th>
+          <th class="text-nowrap" scope="col">İfade Adı</th>
+          <th class="text-nowrap" scope="col">Tanım</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>DCMI</td>
+          <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/title" target="_blank">Title</a></td>
+          <td>A name given to the resource.</td>
+          <td>Başlık</td>
+          <td>Kaynağa verilen isim.</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>DCMI</td>
+          <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/subject" target="_blank">Subject</a></td>
+          <td>The topic of the resource.</td>
+          <td>Konu</td>
+          <td>Kaynağın konusu</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>DCMI</td>
+          <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/description" target="_blank">Description</a></td>
+          <td>An account of the resource.</td>
+          <td>Tanım</td>
+          <td>Kaynağın içeriği hakkında bilgi veren özet.</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>DCMI</td>
+          <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/type" target="_blank">Type</a></td>
+          <td>The nature or genre of the resource.</td>
+          <td>Tip</td>
+          <td>Kaynağın türü</td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>DCMI</td>
+          <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/creator" target="_blank">Creator</a></td>
+          <td>An entity primarily responsible for making the resource.</td>
+          <td>Yaratıcı</td>
+          <td>Kaynağın içeriğinden 1. derecede sorumlu kişiler ya da kuruluşlar</td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>DCMI</td>
+          <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/publisher" target="_blank">Publisher</a></td>
+          <td>An entity responsible for making the resource available.</td>
+          <td>Yayıncı</td>
+          <td>Kaynağı kullanıma sunmaktan sorumlu kuruluş.</td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td>DCMI</td>
+          <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/contributor" target="_blank">Contributer</a></td>
+          <td>An entity responsible for making contributions to the resource.</td>
+          <td>Katkı Sağlayan</td>
+          <td>Kaynağın içeriğine 2. derecede katkıda bulunan kişi ya da kuruluş.</td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td>CC</td>
+          <td><a href="https://creativecommons.org/ns#License" target="_blank">License</a></td>
+          <td>A set of requests/permissions to users of a Work.</td>
+          <td>Lisans</td>
+          <td>Bir çalışmanın kullanıcılarına yönelik bir dizi istek / izin.</td>
+        </tr>
+        <tr>
+          <th scope="row">9</th>
+          <td>DCMI</td>
+          <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/date" target="_blank">Date</a></td>
+          <td>A point or period of time associated with an event in the lifecycle of the resource.</td>
+          <td>Tarih</td>
+          <td>Kaynağın yaşam döngüsündeki bir olayla ilgili bir nokta ya da zaman aralığı.</td>
+        </tr>
+        <tr>
+          <th scope="row">10</th>
+          <td>DCMI</td>
+          <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/language" target="_blank">Language</a></td>
+          <td>A language of the resource.</td>
+          <td>Dil</td>
+          <td>Kaynağın dili</td>
+        </tr>
+        <tr>
+          <th scope="row">11</th>
+          <td>DCMI</td>
+          <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/format" target="_blank">Format</a></td>
+          <td>The file format, physical medium, or dimensions of the resource.</td>
+          <td>Biçim</td>
+          <td>Kaynağın dosya biçimi, fiziksel ortamı veya boyutları.</td>
+        </tr>
+        <tr>
+          <th scope="row">12</th>
+          <td>DCMI</td>
+          <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/identifier" target="_blank">Identifier</a></td>
+          <td>An unambiguous reference to the resource within a given context.</td>
+          <td>Tanımlayıcı</td>
+          <td>URL, URN gibi kaynağı tanımlayıcı bir referans bilgisi ya da adres.</td>
+        </tr>
+        <tr>
+          <th scope="row">13</th>
+          <td>LRMI</td>
+          <td><a href="https://www.dublincore.org/specifications/lrmi/lrmi_terms/#EducationalAudience" target="_blank">Educational Audience</a></td>
+          <td>An individual or group for whom the learning resource was created or useful.</td>
+          <td>Hedef Kitle</td>
+          <td>Öğrenim kaynağının yaratıldığı ya da faydalı olacağı kişi ya da grup.</td>
+        </tr>
+        <tr>
+          <th scope="row">14</th>
+          <td>LRMI</td>
+          <td><a href="https://www.dublincore.org/specifications/lrmi/lrmi_terms/#educationalUse" target="_blank">Educational Use</a></td>
+          <td>The purpose of a work in the context of education.</td>
+          <td>Eğitsel Kullanım</td>
+          <td>Eğitim bağlamında çalışmanın ne amaçla kullanılacağı.</td>
+        </tr>
+        <tr>
+          <th scope="row">15</th>
+          <td>LRMI</td>
+          <td><a href="https://www.dublincore.org/specifications/lrmi/lrmi_1/" target="_blank">Accessibility Feature</a></td>
+          <td>Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility. </td>
+          <td>Erişilebilirlik Özelliği</td>
+          <td>Erişilebilirlik için erişilebilir medya, alternatifler ve desteklenen geliştirmeler gibi kaynağın içerik özellikleri.</td>
+        </tr>
+        <tr>
+          <th scope="row">16</th>
+          <td>LRMI</td>
+          <td><a href="https://www.dublincore.org/specifications/lrmi/lrmi_terms/#timeRequired" target="_blank">Time Required</a></td>
+          <td>Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience.</td>
+          <td>İhtiyaç Duyulan Süre</td>
+          <td>Hedef kitlenin bu öğrenme kaynağını tamamlamak için ihtiyaç duyduğu süre.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</main>
+
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">
+      <script>document.write(footer)</script>
+    </span>
+  </div>
+</footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>
