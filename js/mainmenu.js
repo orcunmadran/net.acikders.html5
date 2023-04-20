@@ -1,9 +1,11 @@
 mainMenu = [
     ['Ana Sayfa', 'index.html', '_self'],
     ['Proje Hakkında', 'about.html', '_self'],
+    ['Proje Dokümanı', 'docs.html', '_self'],
     ['Üst Veri Şeması', 'schema.html', '_self'],
     ['Üst Veri Formu', 'metaform.html', '_self'],
-    ['İletişim', 'contact.html', '_self']
+    ['İletişim', 'contact.html', '_self'],
+    ['EN', 'en.html', '_self']
 ];
 searchForm = "";
         //'<form class="d-flex" role="search">'+
