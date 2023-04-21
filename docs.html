@@ -178,6 +178,652 @@
       <li>Tasarlanan üst veri modelini temel alan bir arama motoru nasıl geliştirilmelidir?</li>
       <li>Arama sonuçlarının öğrenen açısından optimum düzeye getirilmesi nasıl sağlanabilir?</li>
     </ol>
+    <h2>Amaç</h2>
+    <p>Araştırmanın ana amacı, öğrenenlerin açık eğitim kaynaklarına daha etkili şekilde erişimini sağlayacak bir semantik üst veri modeli geliştirilmesidir. Bu genel amaç doğrultusunda aşağıdaki alt amaçlar da yer almaktadır:</p>
+    <ol>
+      <li>AEK için oluşturulacak üst veri modeline açık lisansların entegre edilmesi.</li>
+      <li>AEK üst veri modelinin test edilmesini için bir arama motoru geliştirilmesi.</li>
+      <li>Aramada kullanılan anahtar kelimeler ile AEK üst verileri arasında anlamsal bir ilişkinin makine öğrenmesi algoritmaları yardımıyla otomatik olarak sağlanması.</li>
+    </ol>
+    <h2>Önem</h2>
+    <p>Bilgiye erişim öğrenme süreci içerisinde çok önemli bir yere sahiptir. (Ott ve Meurers, 2010). Öğrenenin bilgi sahibi olmak istediği konudaki eğitim kaynaklarına en hızlı şekilde ulaşabileceği ortam günümüzde İnternet’tir. İnternet özellikle eğitim kaynaklarının kitlesel erişime açılabilmesini kolaylaştırmış ve bu noktada öncü rol oynamıştır. Öğrenenler için neredeyse sınırsız bir kaynak olarak görülen İnternet, bilgiye erişim açısından her geçen gün daha da zorlu bir ortama dönüşmektedir (Tonta, Bitirim ve Sever 2002).</p>
+    <p>Açık eğitim kaynaklarına ulaşmak için arama motorlarında bir arama yapıldığında, birçok farklı Web sitesinden ya da farklı içerik portallarından anahtar kelimelerle eşleşen onlarca, yüzlerce, kimi zaman ise binlerce sonuç listelenir. Bu sonuçlar içerisinde arama motoru tarafından yapılan sıralama o sayfanın arama motoru özelindeki değeri ile ilgilidir, çoğu zaman herhangi bir anlamsal ilişki içermez. Bu noktada kullanıcı belki de yeni öğrenmeye başlayacağı bir konu ile ilgili sadece popüler sonuçlara erişebilmektedir. Kendisi için uygun bir başlangıç noktası ya da kendine rehberlik edebilecek bir yol haritasını elde edemeyecektir.</p>
+    <p>Günümüzde önemli bir risk oluşturan ve halen etkilerini hissettiğimiz Covid-19 ve benzeri salgın hastalıklar ya da deprem, sel, yangın gibi doğal afetler, öğretim süreçlerinin açık ve çevrimiçi platformlara doğru kaydırılması zorunluluğunu da beraberinde getirmektedir. Bu bağlamda açık eğitim kaynaklarına erişebilmek daha da önemli hale gelmektedir.</p>
+    <p>Öğrenenin belirli bir konuyu öğrenme süreci içerisinde ihtiyaç duyacağı yol haritası öğrenme nesneleri arasındaki ilişki kullanılarak oluşturabilecektir. Bu sayede hem eğitmenler hem de öğrenenler açık eğitim kaynakları içerisinde yaptığı bir arama sonucunda sadece seçtiği anahtar kelimeler ile eşleşen sonuçlarla yetinmek zorunda kalmayacaktır. Araştırmanın önemi, dijital ortamda sayıları her geçen gün artan açık eğitim kaynaklarına öğrenenin erişiminin en etkin şekilde sağlanabilmesine olanak tanımasıdır.</p>
+    <p>Özetlemek gerekirse kabul görmüş ve yaygın olarak kullanılan bir üst veri modelinin AEK için bulunmaması yapılan çalışmayı özgün kılmaktadır. Geliştirilen model farklı platformlarda AEK dizinlenmesinin gerçekleştirilebilmesi açısından ve öğrenenlerin bu dizinleme sonucu kullanabilecekleri arama altyapılarının oluşturulması açısından işlevseldir. Bu bağlamda gerek öğrenenlere gerek dizinleme çalışmalarını gerçekleştirenlere, gerekse de bilgi sistemleri içerisinde AEK ile ilgili arama özelliği eklemek isteyen geliştiricilere fayda sağlamaktadır.</p>
+    <h2>Sınırlılıklar</h2>
+    <p>Bu araştırmanın sınırlılıklarını aşağıdaki 3 başlık altında ele alarak araştırma sürecini bu bağlamda irdelemek ve bulguları bu çerçevede yorumlamak anlamlı olacaktır.</p>
+    <ol>
+      <li>Veri kaynakları: İndekslenen açık eğitim kaynakları Bilge-İş ve Akadema’da yer alan 200 dersten oluşmaktadır. İndekslenen bu 200 ders konu ve kapsam açısından sınırlı bir içeriğe sahiptir.</li>
+      <li>Katılımcılar: Bu araştırmaya gönüllü katılım sağlayanlar Ankara Üniversitesi Bilgisayar ve Öğretim Teknolojileri Eğitimi Bölümü ve Hacettepe Üniversitesi Bilgi ve Belge Yönetimi Bölümü lisans öğrencileri ile sınırlıdır.</li>
+      <li>Veri toplama araçları: Araştırmanın veri toplama süreçlerinde görüşme ve anket yöntemlerinin seçilmiş olması bir sınırlılık olarak görülebilir.</li>
+    </ol>
+    <h2>Tanımlar</h2>
+    <p><strong>Üst Veri:</strong> En genel tanımı ile “veri hakkında veri” anlamına gelmektedir (Taşkın, 2019). Bir kaynağın ya da verinin öğelerini tanımlayan bilgilerdir (Metadata, 2020). Verilerin bulundukları ya da üretildikleri sistem dışında diğer sistemler tarafından okunabilmesini ve analiz edilebilmesini sağlarlar.</p>
+    <p><strong>Üst Veri Standartları:</strong> Sistemler arası üst veri kullanımını mümkün kılabilmek için üst verilerin belirli standartlara göre oluşturulması gerekmektedir. En çok bilinen ve kullanılan üst veri standardı Dublin Core Metadata Initiative (DCMI) tarafından geliştirilen DC’dir (Taşkın, 2019). Farklı disiplinler için geliştirilen birçok üst veri standardı DC’yi temel alır ve bu standardın üzerinde bazı ekleme ve çıkarmalar yapar.</p>
+    <p><strong>Üst Veri Harmanlama:</strong> Farklı bilgisayar sistemleri (web siteleri, veri tabanları, portallar vb.) üzerinde yer alan dijital kaynakların, belirli standartlara göre oluşturulmuş üst verilerinin bir yazılım aracılığıyla toplanmasına üst veri harmanlaması denir.</p>
+    <p><strong>Üst Veri Harmanlama Protokolü:</strong> Dijital kaynakların üst verilerini harmanlayan sistemlerin, harmanlama işlemini hangi standartlar çerçevesinde yapacağını belirleyen protokollerdir. Açık Arşivler Girişimi tarafından geliştirilen Açık Arşivler Girişimi Metadata Harmanlama Protokolü (OAI-PMH), harmanlama sistemleri içerisinde en çok tercih edilen protokollerden biridir (“Open Archives Initiative”, t.y.).</p>
+    <p><strong>Açık Eğitim:</strong> Akademik olarak herhangi bir akreditasyona gerek duyulmayan, herhangi bir kabul şartı aranmayan ve genellikle çevrimiçi olarak sunulan eğitimdir (Open Education, 2019).</p>
+    <p><strong>Açık Erişim:</strong> Kamu kaynakları ile desteklenen araştırmalardan üretilen yayınların tam metinlerine çevrimiçi olarak ücretsiz erişim sağlanmasına açık erişim denir (Tonta, 2015).</p>
+    <p><strong>Açık Lisans:</strong> Açık Lisanslar, katı bir telif hakkı koruması içeren “her hakkı saklı” kavramı yerine “bazı hakları saklı” yaklaşımını benimseyen, her türden eserin paylaşımına, yeniden kullanımına ve adaptasyonuna telif sahibinin belirlediği haklar çerçevesinde izin veren lisanslardır. Dünya genelinde yaygın olarak kullanılan açık lisanslar Creative Commons (CC) tarafından kullanıma sunulan lisanslardır. CC, bilginin paylaşımına, tekrar kullanımına ve adaptasyonuna olanak veren lisanslama araçlarına sahip kâr amacı gütmeyen uluslararası bir organizasyondur. Creative Commons, bu amaçları gerçekleştirebilmek için açık lisanslar topluluğu sunar. Creative Commons lisansları, eserin ilk sahibinden itibaren katkı veren herkese (tüzel ya da gerçek kişiler) atıf vermek şartıyla, lisansta belirtilen haklar çerçevesinde tekrar izin almaya gerek olmadan eserin kullanımına olanak sağlar. Creative Commons lisansları logo ve lisans kodları aracılığı ile hak sahibi ile kullanıcısı arasındaki iletişimi hızlandırır, paylaşımı sağlar, kullanımı artırır, yaratıcılığı ve inovasyonu güçlendirir (Madran ve Holt, 2020).</p>
+    <p><strong>Açık Eğitim Kaynakları:</strong> Açık Eğitim kapsamında hazırlanan tüm materyaller ve bu materyallerin İnternet üzerinden erişimine olanak sağlayan tüm sistemler Açık Eğitim Kaynakları (AEK) olarak ifade edilebilir.</p>
+    <p><strong>Makine Öğrenmesi:</strong> Bilgisayarın sadece verilen kodlarla programlanmadığı, üzerinde çalışılan problem ile ilgili olarak veri setlerinden elde edilen bilgilerin de sürece dahil edildiği bir çalışma alanıdır. Yapay zekanın bir alt bileşeni olarak tanımlanabilir ve derin öğrenme olarak da ifade edilebilir (Özdemir ve Örslü, 2019).</p>
+    <p><strong>Derlem:</strong> Türk Dil Kurumu’nun Güncel Türkçe Sözlüğü’nde “Bir dilin türlü kullanım alanlarından derlenmiş örneklerinin dil bilgisi ve kuramsal dil bilimi araştırmalarında kullanılmak üzere bilgisayar tarafından okunabilecek biçimde bir araya getirilmiş kümesi.” şeklinde tanımlanmıştır (“Türk Dil Kurumu Sözlükleri: Güncel Türkçe Sözlük”, t.y.). Bu çalışmada derlem, makine öğrenmesinde eğitim verisi olarak kullanılacak Türkçe metinleri kapsamaktadır.</p>
+    <p><strong>Creative Commons Rights Expression Language (CC REL):</strong> Lisans bilgilerinin RDF (Resource Description Framework / Kaynak Tanımlama Çerçevesi) kullanılarak nasıl tanımlanabileceğini ve lisans bilgilerinin çalışmalara nasıl eklenebileceğini açıklayan bir işaretleme dilidir (CC REL, 2018).</p>
+    <h1>Bölüm 2</h1>
+    <h2>Kavramsal Çerçeve ile İlgili Araştırmalar</h2>
+    <p>Bu bölüm altında yer alan bilgi erişim kuramı ve bu kuram altında detaylandırılan alt başlıklar araştırmanın kavramsal temelini oluşturmaktadır.</p>
+    <h3>Bilgi Erişim Kuramı</h3>
+    <p>İnsanlık bilgi üretmeye başladığı andan itibaren eş zamanlı olarak bilgiye erişim konusunda da çalışmalar yapmaya başlamıştır. Üretilen bilgi miktarı insanlık tarihi boyunca her geçen gün artmakta, bilgiye erişim konusunda yaşanan problemlerin çözümü de git gide daha fazla önem kazanmaktadır. Akıllara şöyle bir soru gelebilir: “Bilgiye erişebilmek neden bu kadar önemli?”. Bu soruya yanıt verebilmek ve araştırmaya temel teşkil eden kuramsal alt yapıyı daha iyi anlayabilmek için öncelikle “bilgi” kavramına göz atmak gerekir.</p>
+    <p>Bilgi, birçok farklı sözlük anlamına sahip bir kelimedir. Özellikle soyut bir kavram olması onun tanımlanmasını bir ölçüde zorlaştırmaktadır. Sözlüklerde bilgi ile ilgili tanımlara baktığımızda; “İnsan aklının erebileceği olgu, gerçek ve ilkelerin bütünü, bili, malumat”, “Öğrenme, araştırma veya gözlem yolu ile elde edilen gerçek”, “İnsan zekâsının çalışması sonucu ortaya çıkan düşünce ürünü”, “Genel olarak ve ilk sezi durumunda zihnin kavradığı temel düşünceler”, “Kurallardan yararlanarak kişinin veriye yönelttiği anlam” şeklinde farklı bakış açılarının yer aldığını görürüz. Ancak tüm bu tanımların belki de ortak noktası, insanların hayatta kalabilmesi ve gelişimlerine devam edebilmeleri için kazandıkları deneyimleri, bir anlamda elde ettikleri bilgiyi yeniden kullanabilmelerine bağlı olduğu gerçeğidir. Buckland’a (1991, s. 1-2) göre bilgi kelimesinin üç temel kullanım şekli bulunmaktadır:</p>
+    <ol>
+      <li>Süreç olarak bilgi (information-as-process)</li>
+      <li>Bilgi olarak bilgi (information-as-knowledge)</li>
+      <li>Nesne olarak bilgi (information-as-thing)</li>
+    </ol>
+    <p>Süreç olarak bilgi, öğrenme süreci sırasında bilgilenme etkinliğinin tamamı olarak ifade edilebilir. Bilgi olarak bilgi ise, öğrenme süreci içerisinde aktarılan ve elde edilen deneyimler ile yoğrulmuş, dönüşüme uğramış olan bilgiyi temsil eder. Nesne olarak bilgi, belki de bizim en rahat tanımlayabildiğimiz ve somut olarak ifade etmekte zorlanmadığımız veri ya da belgeleri nitelemek için kullanılır. Bilginin depolanması, paylaşılması ve yeniden kullanılması, yani bir anlamda bilginin işlenmesi ile ilgili süreçlerin tamamı da bilgi teknolojisi olarak adlandırılmaktadır (Buckland, 1991, s. 5).</p>
+    <p>Bilgi kavramı üzerinde genel hatları ile durduktan sonra bilgi erişim tanımı üzerinde durabiliriz. Bilgi erişim (information retrieval), bir bilim disiplini olarak yaklaşık 70 yılı aşkın bir geçmişe sahiptir. Bilgi erişim, “bilgi toplama, sınıflama, kataloglama, depolama, büyük miktardaki verilerden arama yapma ve bu verilerden istenen bilgiyi üretme (veya gösterme) teknik ve süreci” olarak tanımlanmaktadır (Tonta, 2001). Bilgi erişim, bilgi öğelerinin temsili, depolanması, organizasyonu ve bunlara erişim ile ilgilenirken bir yandan da kullanıcının bilgi ihtiyacını tanımlamaya çalışır ve ilgilendiği bilgilere kolay erişimini hedefler. Ancak unutulmamalıdır ki kullanıcı bilgi ihtiyacının tanımlanması basit bir problem değildir (Baeza-Yates ve Riberto-Neto, 1999).</p>
+    <h3>Bilgi Erişim ve Veri Erişim Arasındaki Fark</h3>
+    <p>Bilgi erişim sistemi bağlamında veri erişimi, bir derme içerisinde yer alan kullanıcı sorgusundaki anahtar sözcükleri içeren belgeleri belirlemekten oluşur ve bunlar çoğunlukla kullanıcı bilgi ihtiyacını karşılamak için yeterli değildir. Aslında herhangi bir kullanıcı, belirli bir sorguyu karşılayan verileri (kayıtları) almaktan çok bir konu hakkında bilgi almakla ilgilenir. Basit bir sorgulama veri tabanı sistemini kullanan kişiye bir çözüm sunarken, bir konu veya konu hakkında bilgi alma sorununu çözmez. Kullanıcı bilgi ihtiyacını karşılama girişiminde etkili olması için, bilgi erişim sistemi bir koleksiyondaki belgelerin içeriğini bir şekilde yorumlamalı ve bunları kullanıcı sorgusuyla ilgililik derecesine göre sıralamalıdır. Bu nedenle, ilgililik kavramı bilgi erişimin merkezinde yer alır. Sonuçta bilgi erişim sisteminin birincil amacı, mümkün olduğunca az sayıda ilgisiz belgeye ve kullanıcı sorgusu ile ilgili tüm belgeler ulaşmaktır (Baeza-Yates ve Riberto-Neto, 2011).</p>
+    <h3>Bilgi Erişim Sorunu</h3>
+    <p>Bilişim teknolojilerindeki kapasite artışı ve beraberinde getirdiği yüksek depolama olanağı bilgi erişim sorunu için tek başına bir çözüm sağlamamaktadır. Bilakis üretilen ve depolanan bilginin sürekli artıyor olması bilgiye erişimi daha zorlu bir süreç haline getirmektedir. Artık bilgi erişimde ihtiyacımız olan ilgili sonuçların listelenmesi değil, “en ilgili” sonuçların listelenmesidir. Bunun önemini günümüzde arama motorlarında yaptığımız basit bir arama sonucunda görüntülenen milyonlarca bağlantıdan yola çıkarak anlayabiliriz.</p>
+    <p>Bilgi erişim açısından avantaj sağlayacak ve en ilgili sonuçlara ulaşmamızı sağlayacak yapılandırılmış veri üzerinden erişimin gerçekleşmesi özellikle İnternet ile yoğunluğu artan dijital platformlar için başlıca çözüm yollarından biri haline gelmiştir. Bu yapılandırılmış veriler üzerinde uygulanacak farklı algoritmalar da bilgi erişim başarısını arttırarak kullanıcıların beklentilerini karşılamada önemli bir rol oynamaktadır (Vickery ve Vickery, 2004).</p>
+    <h3>Bilgi Erişim Modelleri</h3>
+    <p>Bilgiye erişim modelleri sorgu cümlesindeki anahtar kelimelerle, sorgunun yapıldığı yapılandırılmış verilerden oluşan dizin arasında herhangi bir çakışma olup olmadığını belirleyen erişim kurallarından oluşur. Bu erişim kurallarının her biri bir erişim modeli olarak da adlandırılabilir (Tonta, 1995). Bu bağlamda üç temel bilgi erişim modeli bulunmaktadır:</p>
+    <ol>
+      <li>Boole Modeli: Bu modelde sorgu cümlesindeki terimlerin dizin içinde yer alıp almadığına göre erişim sağlanır. Erişim açısından sorgu terimlerinin her biri eşit ağırlığa sahiptir. Sorgulamada kullanılan terimler arasındaki ilişkiler Boole mantığı (ve, veya) ile belirlenebilir.</li>
+      <li>Olasılıksal Model: Bu modelde sorgulamada kullanılan terimlerin ağırlıkları kullanıcılar tarafından belirlenebilir.</li>
+      <li>Vektör Uzay Modeli: Bu modelde ise sorgulamada kullanılan terimler ile dizinlemede kullanılan terimlerin belirli ağırlıkları vardır. Ancak terimler çok boyutlu bir uzayda vektörler olarak işlem görürler.</li>
+    </ol>
+    <p>Her bir modele ilişkin ayrıntılı süreçler aşağıda açıklanmaktadır.</p>
+    <h4>Boole Modeli</h4>
+    <p>Boole modeli ilişkisel veri tabanı sistemlerinde ve Web üzerinde çalışan arama motorlarında yaygın olarak kullanılan bir modeldir. Günümüzde hemen hemen tüm ticari veri tabanı ve erişim sistemleri tarafından kullanılan bu model, Boole mantığına ve küme kuramına dayanmaktadır. Aranacak belgeler ve kullanıcı sorgusu terim kümeleri olarak algılanır. Erişim, belgelerin sorgu terimlerini içerip içermediğine bağlıdır.</p>
+    <p>Geleneksel olarak, "gerçek" bir belge bir kitap, bir makale, bir açık eğitim kaynağı veya AEK içinde yer alan herhangi bir ses, metin ya da video dosyası olabilir. Bu belgelere erişim sağlanabilmesi için terim setleri ile temsil edildikleri düşünülür. Uygulamada, orijinal belge (ör AEK) ve onun temsili (üst verisi) iki farklı varlıktır. Sorguda n sayıda terim (t) bulunabilir. Bu terimlerin birbiri ile çakışması ikili sistemdeki bir (1) ve sıfır (0) ile ifade edilir. Kesişen terimler arasındaki ilişki “1” ile, kesişmeyen terimler arasındaki ilişki ise “0” ile gösterilir. ta, tb, ve tc terim setleri arasındaki kesişimden ortaya çıkan ikili düzen Şekil 1’de gösterilmektedir (Baeza-Yates ve Riberto-Neto, 1999).</p>
+    <p><img src="img/sekil_01.png" width="400"></p>
+    <p>Şekil 1. Sorguyu Temsil Eden Üç Bileşen.</p>
+    <h4>Olasılıksal Model</h4>
+    <p>Olasılıksal Model’in temelini Roberston ve Spark Jones’un 1976 yılında yayınlanan “Relevance weighting of search terms” (Arama terimlerinin ağırlıklı ilgililiği) başlıklı makalesi oluşturur (Roberston ve Spark, 1976). Daha sonraki yıllarda bu makalede ele alınan yaklaşım ikili bağımsız erişim (binary independence retrieval) modeli olarak da anılmaya başlanmıştır. İlgililiğin ağırlıklı olarak belirlenmesinde temel alınan ana prensip bir anahtar kelimeye ya da bir terime diğer anahtar kelimelerden ya da terimlerden daha çok önem verilmesidir.</p>
+    <p>Olasılıksal Model’de sorguda kullanılan anahtar kelimeler ya da dizinlenen kayıtlardaki çakışan terimler farklı ağırlıklara sahip olabilir ve sorgulama sonucu erişilen kayıtlar bu ağırlıklandırma dikkate alınarak listelenir. Sorgulama yapılacak derlemin dizinlenmesi aşamasında belirlenen üst veri alanlarına değişik seviyelerde önem atfedilebilir. Örneğin, eser adının sistem içerisindeki ağırlığı konu başlıkları olarak kullanılan anahtar kelimelerden daha az olarak belirlenebilir. Ağırlıklandırma işleminin sorguyu gerçekleştiren kullanıcı tarafından belirlenmesi de sağlanabilir. Sorguda kullanılacak anahtar kelimeleri girme sırası bu tür bir ağırlıklandırma işlemi için kullanılabilir.</p>
+    <p>Olasılıksal Model modern erişim sistemleri içerisinde (ör: arama motorları) belirli algoritmaların geliştirilerek ilgili sonuçların bu algoritmalar temel alınarak listelenmesini sağlamaktadır. Algoritmalar içerisinde önceki sorgulardan elde edilen deneyimler dikkate alınarak iyileştirmeler yapılmakta ve en ilgili sonuçların listelenmesi için algoritmalar üzerindeki çalışmalar sürekli devam etmektedir. Günümüzde yoğun olarak bilgiye erişim için kullandığımız İnternet tabanlı arama motorlarının başarılarını kendilerine özgü algoritmalarına borçludurlar. Aynı derlemi dizinleyen farklı arama motorlarının aynı anahtar kelimeler kullanılarak sorgulanmasında farklı sonuç listelerinin oluşmasının nedeni kullanılan erişim algoritmalarının farklı oluşudur (Görsel 1).</p>
+    <p><img src="img/gorsel_01.png"></p>
+    <p>Görsel 1. Google ve Yandex Arama Motorlarında “açık erişim” Anahtar Kelimesi ile Yapılmış Olan Sorgu Sonuçlarının Listelenmesi.</p>
+    <h4>Vektör Uzay Modeli</h4>
+    <p>Vektör uzay modelinde, ikili ağırlıklandırmanın sınırlayıcılığı karşısında belirli bölümlerin kendi içinde kısmi olarak ağırlıklandırılmasını mümkün kılan bir çerçeve yer almaktadır. Bu çerçevenin temelini sorgulardaki ve belgelerdeki dizin terimlerine ikili olmayan ağırlıklar atanması oluşturmaktadır. Bu terim ağırlıkları, sistemde depolanan her belge ile kullanıcı sorgusu arasındaki benzerlik derecesini hesaplamak için kullanılır. Vektör modeli, erişilen belgeleri bu benzerlik derecesine göre azalan bir düzende sıralayarak, sorgu terimleriyle yalnızca kısmen eşleşen belgeleri de dikkate alır. Sonuç olarak, Boole Modeli tarafından oluşturulan listelemeden çok daha ilgili bir erişim listesi oluşturulmuş olur.</p>
+    <p>Vektör uzay modelinde belgeler ve sorgular vektörler (çizgeler) olarak ifade edilirler. Her boyut ayrı bir terime karşılık gelir. Sorguda kullanılan terim belge içinde geçiyorsa, vektördeki değeri sıfır değildir. Terim ağırlıkları olarak da bilinen bu değerleri hesaplamak için farklı yöntemler geliştirilmiştir (Salton ve McGill, 1983). En çok bilinen ve kullanılan yöntem TF-IDF (term frequency-inverse document frequency) olarak ifade edilen terim frekansı-ters belge frekansı ağırlıklandırmasıdır (Alupoaie ve Cunningham, 2013).</p>
+    <p>Terimin belge içinde tekrarlanma sayısı “terim frekansı” olarak ifade edilir. Bir terim belge içinde tekrar ettikçe o terimin frekans değeri artar. Birden fazla belgede ilgili terimin bulunması ise “ters terim frekansı” olarak ifade edilir. Bir terim ne kadar az dokümanda bulunursa o kadar değerli olduğu kabul edilir. Bütün cümlelerde bulunabilecek “ve”, “veya”, “ya da”, “bunlar”, “şunlar” gibi terimler ters terim frekansına etki edecek terimlere örnek olarak verilebilir. Bu ve benzeri terimler hemen her belgede yer almakta ve belge hakkında herhangi bir tanımlayıcı özelliğe sahip olmamaktadır. Bu yüzden bu tür terimlerin bilgi taşımadığı kabul edilmektedir (Uçkan ve diğerleri, 2019). Terimin vektör uzayındaki yerini tespit eden ağırlık değerinin TF-IDF’ye göre hesaplanması aşağıdaki denklemde gösterilmektedir.</p>
+    <p>
+    tfi : Belge içinde terimin (i) bulunma sayısı.<br>
+    dfj: i teriminin en az bir defa bulunduğu belge sayısı.<br>
+    N : Toplam doküman sayısı
+    </p>
+    <p><img src="img/formul_01.png"></p>
+    <p>Terimin ağırlığı hesaplandıktan sonra bu ağırlıklandırma arama algoritması içerisinde erişilen belgelerin listelenmesi belirleyici rol oynamaktadır (Croft, Metzler ve Strohman, 2015).</p>
+    <h4>Temel Erişim Modellerinin Karşılaştırılması</h4>
+    <p>Genel olarak Boole Modeli en zayıf klasik yöntem olarak kabul edilir. Ana sorunu genellikle kısmi eşleşmeleri tanıyamaması sonucu ortaya çıkan düşük performanstır. Olasılıksal modelin vektör modelinden daha iyi performans gösterip göstermediği konusunda bazı tartışmalar bulunmaktadır. Bruce Croft, yapmış olduğu deneysel çalışmalarda Olasılıksal Model’in daha iyi bir erişim performansı sağladığını öne sürmektedir. Salton ve Buckley ise daha sonraları yaptıkları çalışmalarda bunu reddetmişler ve Vektör Uzay Modeli’nin daha tatmin edici sonuçlar sağladığını belirtmişlerdir (Salton ve Buckley, 1988). Vektör Uzay Modeli araştırmacılar, uygulayıcılar ve Web geliştiricileri topluluğu genelinde popülaritesi yüksek bir bilgi erişim modeli olarak da karşımıza çıkmaktadır (Baeza-Yates ve Riberto-Neto, 1999).</p>
+    <p>Bilgi erişim sistemlerinin temelini hangi erişim modeli oluşturuyor olursa olsun, modelin çalışacağı altyapının sahip oldu özellikler bilgi erişim performansının artırılması açısından belirleyici olmaktadır. En önemli altyapı bileşeni olarak ifade edebileceğimiz üst veriler ile yapılandırılmış ve standartlar çerçevesinde dizinlenmiş kayıtlara sahip derlemlerin oluşturulması hayati öneme sahiptir. Bu çalışmanın ana amacını oluşturan AEK için üst veri modelinin oluşturulması bilgi erişim modellerinin uygulanabilmesi açısından zorunluluk içermektedir.</p>
+    <h3>AEK Konusunda Üst Veri Bağlamında Yapılan Araştırmalar</h3>
+    <p>Alanyazın incelendiğinde ülkemizde AEK ile ilgili üst veri bağlamında yapılan çalışmaların yurtdışı kaynaklı çalışmalar ile kıyaslandığında sayıca çok az olduğu görülmektedir. Türkiye’de üst veri ile ilgili farklı disiplinlerde çalışmalar olmasına rağmen AEK temel alan çalışmalar alana yeterli katkıyı sağlayacak yoğunluğa ulaşmamıştır. Öğrenme nesnelerinin ambarlarda depolanması ve kullanımı ile ilgili çalışmalar olsa da bu çalışmalar daha çok oluşturulan öğrenme nesnesi ambarlarının eğitsel etkinliklerde kullanımı ile ilgilidir. Bu ambarlara nesnelerin nasıl kaydedileceği, hangi standartların kullanılacağı, etkili bir şekilde bu nesnelere erişim ile ilgili çalışmalar istenilen seviyede değildir. Prof. Dr. Tuncay Yiğit’in yürütücülüğünde 2017 yılında gerçekleştirilen TÜBİTAK destekli “Öğrenme Nesne Ambarları İçin Zeki İçerik Yönetim Yazılım Ana Çatısı” adlı proje Türkiye’de bu konuda yapılan çalışmalardan biridir (Yiğit ve Işık, 2017). Çalışma kapsamında geliştirilen “Zeki Öğrenme NESne Ana çatısı (ZONESA)” adlı sistemde, öğrenme nesnelerinin tanımlanması için IEEE Teknoloji Standartları Komitesi’nin Öğrenme Nesnesi Üst Veri seti “LTSC LOM” (Learning Technology Standards Committee Learning Object Metadata) kullanılmıştır. IEEE LTSC LOM içerisinde 9 kategori ve bu kategoriler altında 70 civarında tanımlayıcı ifade yer almaktadır (IEEE LOM, 2002).</p>
+    <p>Bir diğer çalışma ise Doç. Dr. Aras Bozkurt’un yürütücülüğünde TÜBİTAK 1001 Programı desteği ile gerçekleştirilen “Yükseköğretimde Eğitsel İçeriklerin Sunumu için Dijital İçerik Ekosistemi Gereksinimlerinin Belirlenmesi” projesidir (Bozkurt, Uçar, Kurşun, Kayaduman ve Üstün, 2020). Proje kapsamında yapılan araştırmalar sonucunda eğitsel içeriklerin yer aldığı mevcut dijital platformlarda arama özelliğinin yetersiz olduğu ve öğrenenler tarafından en büyük sıkıntının bilgiye erişim konusunda yaşandığı tespit edilmiştir (Üstün ve diğerleri, 2021).</p>
+    <p>Yurtdışında AEK ve üst veri ile ilgili yapılan çalışmaların ise genel olarak üç ana kategori altında gerçekleştirildiği gözlenmiştir. Bu kategoriler:</p>
+    <ol>
+      <li>AEK’da yer alan içeriklerden üst verinin otomatik olarak üretilmesi,</li>
+      <li>Dijital platformlarda yer alan AEK’nın sınıflandırılmasında ve yönetiminde, üst verilerin, ontolojilerin ve anlamsal ağların kullanılması,</li>
+      <li>Mevcut AEK üst veri standartlarının ihtiyaçlar doğrultusunda yeniden ele alınması, optimize edilmesi ve yeni üst veri modellerinin oluşturulması.</li>
+    </ol>
+    <p>Bu konularda yapılan birçok çalışma içinde öne çıkanlar incelendiğinde öncelikli olarak AEK için kullanılacak standart bir üst veri modeline ihtiyaç duyulduğu görülmektedir (Barker ve Campbell, 2015). Zykov ve Isheyemi tarafından 2017 yılında yayınlanan “Architecting Open Education: the Integrated Metadata Warehouse” başlıklı makalede AEK içeriklerinden otomatik olarak üst verinin üretilmesi üzerine yapılan çalışmalarda Dublin Core Üst Veri Seti temel alınmıştır (Zykov ve Isheyemi, 2017). Öğrenme nesnelerinden otomatik olarak üst verilerin çıkartılması üzerine yapılan bir başka çalışmada (Automatic extraction of metadata from learning objects) ise Dublin Core ve IEEE LOM temel alınarak uygulama geliştirilmiştir (Miranda ve Ritrovato 2014). AEK için yapılan üst veri çalışmaları içerisinde ontolojilerin geliştirilmesi ve üst verilerin bu ontolojiler kapsamında tanımlanması da yer almaktadır (Wu ve Wang, 2010). Web 3.0 ve Anlamsal Ağ kavramlarına da değinilen çalışmalarda üst veri standartlarının önemi de ön plana çıkmaktadır (Poulakakis, Vassilakis, Kalogiannakis, ve Panagiotakis, 2017, Durán ve Ramírez 2021).</p>
+    <p>AEK ile ilgili üst veri çalışmalarının kayda değer bir kısmı da mevcut üst veri standartlarını temel alarak yeni modellerin geliştirilmesine odaklanmaktadır. Alhaag ve arkadaşlarının 2018 yılında yaptıkları araştırma kapsamında, dijital depolardaki eğitim kaynaklarını tanımlayan üst verilerin dinamik olarak özelleştirilmesi üzerine bir uygulama geliştirilmiştir (Alhaag, Savic, Milosavljevic, Segedinac ve Filipovic, 2018). Diğer bir araştırmada ise mevcut AEK platformlarının sorunlu olduğu noktalar tespit edilmeye çalışılmış bu noktalar ile ilgili çözüm önerileri üzerinde durulmuştur (de Deus ve Barbosa, 2020). Sadece platformların geri plandaki işleyişleri ile ilgili teknik konular değil, kullanıcı arayüzü ve erişilebilirlik ile ilgili noktalar da araştırmalarda yer almıştır (Navarrete ve Luján-Mora 2018).</p>
+    <p>Birlikte çalışabilirlik birçok araştırmada dikkat çekilen konulardan biridir. Farklı altyapı ve üstyapı bileşenlerine sahip olan sistemlerin birbirleri ile konuşabilmesi ve kaynak paylaşımının sağlanabilmesi standartların önemini ortaya koymaktadır (Li,  Yang ve Liu, 2008). AEK platformlarının salt kendi aralarında konuşabilmelerinin birlikte çalışabilirlik için yeterli olmadığı da ifade edilmektedir.  Genel anlamda Web üzerindeki farklı bilgi kümeleri ile sistemlerin konuşabilmesi üzerine de araştırmalar yer almaktadır. Rajabi ve arkadaşlarının 2015 yılında yaptıkları “Interlinking Educational Resources to Web of Data through IEEE LOM” başlıklı çalışmada, bağlı veri kavramının önemine değinilmiş ve RDF gibi anlamsal ağ teknolojilerinin AEK platformları ile Web arasında kurabileceği bağlantıya dikkat çekilmiştir (Rajabi, Sicilia ve Sanchez-Alonso 2015).</p>
+    <p>AEK ve üst veri yapıları son yıllarda çok farklı açılardan araştırmalarda yer almıştır. Kalitenin ele alındığı “Açık Eğitim Kaynaklarının Kalite Tahmini: Üst Veri Tabanlı Bir Yaklaşım” adlı çalışma üst veriye odaklanan çalışmaların ne denli detaya inebileceğini gözler önüne sermektedir (Tavakoli, Elias, Kismihok ve Auer, 2020).</p>
+    <p>Bu tez çalışmasının AEK bağlamında bilgiye erişim açısından alanyazında önemli bir eksikliği dolduracağı düşünülmektedir. Özellikle AEK için tasarlanan üst veri modeli ve geliştirilen uygulamalar ile sadece kavramsal olarak değil, aynı zamanda sahada yapılacak çalışmalar için gerek eğitim teknolojileri alanında gerekse de bilgi yönetimi alanında araştırmacılara faydalı olacağı değerlendirilmektedir.</p>
+    <h1>Bölüm 3</h1>
+    <h2>Yöntem</h2>
+    <p>Bu bölümde araştırmanın modeli, araştırmanın aşamaları, veri kaynakları, verilerin toplanması ve verilerin çözümlenmesi yer almaktadır.</p>
+    <h3>Araştırmanın Modeli</h3>
+    <p>Bu araştırmanın amacı, öğrenenlerin açık eğitim kaynaklarına erişimlerini kolaylaştırmak için bir üst veri modeli geliştirilmesi olarak belirlenmiştir. Bu amaca ulaşabilmek için açık eğitim kaynaklarına özel, anlamsal bağlantılara da altyapı oluşturacak bir üst veri modeli tasarlanmıştır. Tasarım süreci devam ederken tasarımın zayıf ve güçlü yönlerini görebilmek, modeli daha iyi hale getirebilmek için Tasarım > Analiz > Tekrar Tasarım işlem basamaklarının izlenmiştir (Güler, 2010). Yapılan tasarımın analiz edilmesi ve elde edilen bulgular ışığında tasarım üzerinde değişiklikler ve iyileştirmeler yaparak tasarım adımının tekrarlanması olarak detaylandırılabilecek bu sürece en uygun araştırma yöntemi Tasarım Temelli Araştırma’dır (TTA) (Wyk ve Villiers, 2014).</p>
+    <p>Araştırmacıların ve uygulayıcıların süreç içerisinde bir araya gelerek tasarım üzerinde yeniden çalışabilmelerine olanak sağlayan TTA, özellikle ürün geliştirilen eğitim alanındaki çalışmalarda tercih edilen bir araştırma yöntemidir (Kuzu, Çankaya ve Mısırlı, 2011). TTA, araştırmacılar ve uygulayıcılar arasında iş birliğine dayalı ve bağlamsal olarak duyarlı tasarım ilkelerinin kullanıldığı; analiz, tasarım, geliştirme ve uygulama adımlarının tekrarlanarak sürecin bir döngü içerisinde devam ettiği; eğitim uygulamaları geliştirmeyi amaçlayan sistematik fakat esnek bir metodoloji olarak tanımlanabilir (Wang & Hannafin, 2005).</p>
+    <p>TTA’nın yukarıda belirtilen genel özellikleri, araştırma yaklaşımını oluşturan prensipleri ve uygulama adımları dikkate alındığında bu araştırma için kullanılan sistematik süreç Şekil 2’de gösterildiği biçimde uyarlanmıştır.</p>
+    <p><img src="img/sekil_02.png" width="600"></p>
+    <p>Şekil 2. Tasarım Temelli Araştırma Sürecinin Uyarlanması (Genel Süreç).</p>
+    <p>Tasarım tabanlı araştırma süreci doğası gereği 8 özellik taşır. Bu bağlamda mevcut araştırma bu özelliklerin tamamını karşılamaktadır (Wyk ve Villiers, 2014).</p>
+    <ol>
+    <li>Karmaşık ortamlar için uygundur: Mevcut çalışmada birden fazla kavramsal çerçeve ele alınarak eğitim kaynaklarına uygulanmıştır.</li>
+      <li>Problem çözme süreci gerektirir: Mevcut çalışma araştırmaya dayalı olarak tüm öğrenenler için gerçekten önemli bir soruna çözüm bulmaktadır.</li>
+    <li>İşbirlikçi ve katılımcı bir süreç gerektirir: Tüm paydaşların sürece katkı sağlaması hedeflenmiştir.
+      <li>Yenilikçidir: Günümüzde benzer çalışmalar farklı alanlarda kullanılıyor olmakla beraber eğitim dünyası için yaygın ve kabul görmüş bir model henüz yoktur.</li>
+      <li>Tekrarlanan süreçlerden oluşur: Tasarım farklı aşamalarla gözden geçirilerek, sürekli optimize edilerek iyileştirilmiştir.</li>
+      <li>Birden fazla çıktısı vardır: Çalışma sonunda hem tasarım modeli oluşturulmuş hem de öğrenenlerin doğru kaynaklarla buluşması sağlanmıştır.</li>
+      <li>Kavramsal alt yapısı olmasına rağmen pragmatiktir: Çalışma belirli kavramsal yapılara dayanmasına rağmen öğrenen görüşleri ve beklentiler doğrultusunda şekillenmiştir.</li>
+      <li>Özgün bir ürün ortaya çıkar: Tasarımın uygulanabilmesi ve modelin test edilebilmesi için Web tabanlı bir platform geliştirilmiştir.</li>
+    </ol>
+    <p>TTA modelinin araştırmada nasıl uygulandığı Şekil 3’de ana hatları ile gösterilmiştir.</p>
+    <p><img src="img/sekil_03.png"width="800"></p>
+    <p>Şekil 3. AEK için Anlamsal Üst Veri Tasarım Süreci (Operasyonel Süreç)</p>
+    <h3>Araştırma Süreci</h3>
+    <p>Araştırma sürecinde izlenecek adımlar temelde 2 aşamada planlanmıştır. Araştırmanın problemini teşkil eden semantik üst veri modeli tasarım süreci bu 2 aşama altındaki 12 adımdan oluşmaktadır. Birinci aşamayı oluşturan ilk 8 adım araştırmanın ana amacını, birinci ve ikinci alt amaçlarını gerçekleştirmeye yöneliktir. İkinci aşamayı oluşturan 4 adım ise araştırmanın üçüncü alt amacını gerçekleştirmeye yöneliktir.</p>
+    <ol>
+      <p><strong>Aşama 1: Semantik Üst Veri Modeli Tasarımı ve Performans Değerlendirmesi</strong></p>
+      <li>Açık Eğitim Kaynaklarının belirlenmesi.</li>
+      <li>Mevcut DC ve LRMI üst veri alanlarının incelenmesi, ihtiyaç duyulmayan alanların çıkarılması ya da yeni alanların eklenmesi ve taslak üst veri şemasının oluşturulması.</li>
+      <li>Eğitim kaynağının AEK olarak değerlendirilmesine olanak sağlayacak açık lisans yapısının taslak üst veri şemasına entegre edilmesi.</li>
+      <li>Oluşturulan taslak ile ilgili uzman görüşlerinin alınması ve bu görüşler doğrultusunda üst veri şemasına uygulamalar öncesi son halinin verilmesi.</li>
+      <li>Araştırma kapsamında gerçekleştirilecek uygulamaların yer alacağı platform olan acikders.net'in geliştirilmesi.</li>
+      <li>Belirlenen AEK’nın üst veri şeması kullanılarak acikders.net içinde oluşturulan veri tabanında dizinlenmesi.</li>
+      <li>Temel arama fonksiyonları ile üst verinin genel performansının değerlendirilmesi.</li>
+      <li>Toplanan verilerin çözümlenmesi sonrasında elde edilen bilgiler ışığında yeniden sistem tasarımının (üst veri, veri tabanı sorguları vb.) yapılması.</li>
+      <p><strong>Aşama 2: Arama Motoru Tasarımı ve Performans Değerlendirilmesi</strong></p>
+      <li>AEK üst verilerinin makine öğrenmesi algoritmasından geçirilerek anahtar kelimeler arasındaki vektör uzaklıklarının belirlenmesi.</li>
+      <li>Elde edilen vektör uzaklıklarına göre arama sonuçlarının yeniden yapılandırılması, ek iyileştirmelerin ve önermelerin yapılması.</li>
+      <li>Makine öğrenmesi süreci sonrası yeniden sistem tasarımının gözden geçirilmesi.</li>
+      <li>acikders.net platformunda oluşturulan sistemin etkililiğinin değerlendirilmesi.</li>
+    </ol>
+  <h3>Katılımcılar</h3>
+    <p>Araştırmanın birinci ve ikinci aşamasında kolay erişilebilir olması nedeni ile Ankara Üniversitesi Bilgisayar ve Öğretim Teknolojileri Eğitimi Bölümü öğrencileri ile Hacettepe Üniversitesi Bilgi ve Belge Yönetimi Bölümü öğrencileri katılımcı olarak yer almıştır. Araştırmanın katılımcılarını her iki bölümün tüm lisans öğrencilerinden çalışmaya gönüllü olarak katılmak isteyenler oluşturmuştur. Araştırmanın ilk aşamasındaki uygulamaya 52 öğrenci katılırken, ikinci aşamadaki uygulamada ise 51 öğrenci yer almıştır.</p>
+    <h3>Verilerin Toplanması</h3>
+    <p>Araştırma kapsamında üç ana veri kaynağı bulunmaktadır. Bu kaynaklar:</p>
+    <ol>
+      <li>Uzman görüşleri: Araştırmanın ilk aşamasında tasarlanan üst veri modeline ilişkin alanında uzman üç öğretim üyesinin görüşleri alınmıştır. Bu uzmanların her biri ile ayrı ayrı çevrimiçi görüşmeler yapılmıştır. Görüşmeler uzmanlardan izin alınarak daha sonra yorumlama sürecinde kullanmak amacıyla kayıt altına alınmıştır.</li>
+      <li>Kullanıcı anketleri: Araştırmanın birinci ve ikinci aşamasında kullanıcılara çevrimiçi anket uygulanmıştır. Her iki ankete de acikders.net platformundaki bir bağlantı yardımıyla erişilebilmektedir. Anketler uygulamalarda yapılacak çalışmaların yönergelerini de içermektedir. Yönergeyi takip eden öğrenci, anketteki soruları cevapladıktan sonra uygulamayı tamamlamış olmaktadır.</li>
+      <li>Sunucu analitikleri: Google Analytics platformu aracılığıyla acikders.net Web sunucusunun kullanım istatistikleri alınmıştır.</li>
+    </ol>
+    <h3>Veri Toplama Araçları</h3>
+    <h4>Uzman Görüşü Formu</h4>
+    <p>Uzmanlarla bire bir gerçekleştirilen çevrimiçi görüşmelerde yarı-yapılandırılmış görüşme formu kullanılmıştır. Bu bağlamda uzmanlara şu sorular yöneltilmiştir:</p>
+    <ol>
+      <li>Araştırma kapsamında tasarlanan AEK üst veri modelinde kullanılmasına gerek olmadığını düşündüğünüz ifade ya da ifadeler var mı?</li>
+      <li>Araştırma kapsamında tasarlanan AEK üst veri modeline eklenmesi gerektiğini düşündüğünüz ifade ya da ifadeler var mı?</li>
+    </ol>
+    <p>Görüşme sırasında uzmanlar yukarıdaki iki temel soru çerçevesinde her bir üst veri ifadesi ile ilgili detaylı değerlendirmelerde bulunmuşlardır. Bu görüşmeler ortalama bir saate yakın sürmüş, tartışmalar daha çok üst veri ifadelerindeki değişikliklerin gerekçelendirilmesi üzerine yoğunlaşmıştır.</p>
+    <h4>Kullanıcı Deneyimi Anketleri</h4>
+    <p>Araştırma kapsamında iki farklı aşamada kullanıcı görüşleri alınmıştır. Öncelikle ilk uygulamanın, “Üst Veri Performansının Değerlendirilmesi” için 3 demografik, 4 açık-uçlu ve 3 likert-tipi soru olmak üzere toplam 10 sorudan oluşan bir anket kullanılmıştır (bakınız Ek 3). Daha sonra ikinci uygulamada “Arama Performansının Değerlendirilmesi” amacıyla yine farklı kullanıcıların görüşlerine başvurulmuştur. Bu amaçla yine 3 demografik, 3 açık-uçlu ve 3 likert-tipi soru olmak üzere toplam 9 sorudan oluşan bir anket uygulanmıştır (bakınız Ek 4).</p>
+    <p>Her iki anket kapsamında demografik bilgi olarak ad, soyad, e-posta, üniversite bilgileri alınmıştır. Yine her iki anket kapsamında sorulan likert tipi ve açık uçlu sorular önce araştırmacı tarafından hazırlanmış, daha sonra üç uzman tarafından değerlendirilerek son halini almıştır.</p>
+    <h4>Google Analitik Platformu</h4>
+    <p>Diğer bir veri toplama aracı ise Google Analytics’dir. Google Analytics, Web sitelerinin ve mobil uygulamaların kullanım istatistiklerini tutan ve bunlara Web tabanlı olarak erişim sağlamanıza imkân veren bir servistir. acikders.net platformu içinde yer alan tüm bileşenlerde Google Analytics takip kodu yer almaktadır ve sunucu istatistikleri bu takip kodu yardımıyla oluşturulmaktadır.</p>
+    <h3>Verilerin Çözümlenmesi</h3>
+    <p>Araştırma sürecinde toplanan ilk veri olan görüşmelere ilişkin video kayıtları içerik analizi yöntemi ile incelenerek yorumlanmıştır. Video kayıtları araştırmacı tarafından izlenerek görüşler metne dönüştürülmüş, metin üzerinde her uzman için ortaya çıkan temalar belirlenmiştir. Bu temalar her bir uzman için ayrı ayrı raporlanmış, elde edilen sonuçlar üst veri modeli taslak çalışmasına yansıtılmıştır.</p>
+    <p>Araştırmanın tasarım ve geliştirme süreçlerinin etkililiği, acikders.net platformunun döndürdüğü sonuçlar (sorgulama sonrası listelenen AEK) çerçevesinde ölçülmüştür. Araştırma kapsamında gerçekleştirilen iki farklı uygulamada acikders.net platformunu kullanan öğrenenlerin döndürülen sonuçlardan ne ölçüde tatmin oldukları, uygulanan anketler ile ortaya çıkarılmıştır. Kullanıcıların görüşlerini detaylı bir şekilde alabilmek için açık uçlu soruların kullanılması tercih edilen bir yöntemdir (Baş ve Akturan, 2013). Anketlerde yer alan açık uçlu sorular yardımıyla kullanıcıların uygulama kapsamındaki görüşlerinin detaylı olarak alınması sağlanmıştır.</p>
+    <p>Anketlerde yer alan açık uçlu sorulara verilen yanıtlar içerik analizi yöntemi ile çözümlenmiştir (Maxwell, 2013). İçerik analizi toplanan verilerin sistematik biçimde incelenmesi prensibine dayalı bilimsel bir yaklaşımdır (Tavşancıl ve Aslan, 2001). İçerik analizi sürecinde yapılan temel çalışma kapsamında, toplanan verilerin oluşturduğu kümenin içindeki belli kelimelerin, cümlelerin, kavramların ve davranışların varlığı belirlenmiştir (Büyüköztürk, Kılıç-Çakmak, Akgün, Karadeniz ve Demirel, 2008).</p>
+    <p>Google Analytics servisi üzerinden sağlanan sunucu istatistikleri, platformun teknik açıdan performansının analiz edilmesi için gerekli olan nicel verileri sağlamıştır. Bu nicel veriler platformun altyapısını oluşturan bileşenlerin optimizasyonunda kullanılmıştır (Görsel 2 ve Görsel 3).</p>
+    <p><img src="img/gorsel_02.png" width="800"></p>
+    <p>Görsel 2. Google Analytics Sunucu İstatistikleri Örneği: Uygulama 1</p>
+    <p><img src="img/gorsel_03.png" width="800"></p>
+    <p>Görsel 3. Google Analytics Sunucu İstatistikleri Örneği: Uygulama 2</p>
+    <h1>Bölüm 4</h1>
+    <h2>Bulgular ve Yorumlar</h2>
+    <p>Bu bölümde yöntem kısmında iki aşamalı olarak listelenen başlıklara ilişkin yapılmış çalışmalar ve bu çalışmalara ilişkin analiz sonuçları aynı sırada detaylandırılarak sunulmuştur.</p>
+    <h3>Birinci Aşamaya İlişkin Bulgular</h3>
+    <h4>Açık Eğitim Kaynaklarının Belirlenmesi</h4>
+    <p>Araştırmada kullanılacak açık eğitim kaynaklarını İnternet üzerinden erişilebilecek Türkçe içeriğe sahip AEK oluşturmaktadır. Veri kaynakları seçilirken Türkçe AEK’nın seçilmesinde etkili olan noktalardan biri, makine öğrenmesi algoritması yardımıyla aramada kullanılacak anahtar kelimeler arasında kurulacak anlamsal bağlantının Türkçe bir derlemeden elde edilen öğrenme verisi ile oluşturulmasıdır. Buna ek olarak bilgiye erişim süreçlerinde standart Latin harfleri dışında kalan Türkçeye has harfler ile ilgili de deneyim elde edilmesi amaçlanmıştır.</p>
+    <p>Araştırmanın doğası gereği içeriğinde metin, ses, video ve animasyon gibi farklı türlerdeki içeriği barındıran portalların seçilmesi önemlidir. Bu nedenle “amaca uygun örneklem” yöntemi ile içerik türü açısından zengin portallar belirlenmiştir. Portalların veri kaynağı olarak seçilmesinde aşağıda maddelenen ölçütler dikkate alınmıştır:</p>
+    <ol>
+      <li>Herkese açık olması,</li>
+      <li>Konu çeşitliliği,</li>
+      <li>Öğretim materyali çeşitliliği,</li>
+      <li>İçeriğin Türkçe olması.</li>
+    </ol>
+    <p>Bu bağlamda, Türkçe içeriğe sahip, portal isimleri, ders sayıları ve erişim adresleri aşağıda listelenmiş olan AEK araştırmada veri kaynağı olarak seçilmiştir (Görsel 4 ve Görsel 5):</p>
+    <ul>
+      <li>Bilgeİş, 100 adet çevrimiçi ders,  <a href="https://bilgeis.net/" target="_blank">https://bilgeis.net/</a></li>
+      <li>Akadema, 100 adet çevrimiçi ders, <a href="http://akadema.anadolu.edu.tr/" target="_blank>">http://akadema.anadolu.edu.tr/</a></li>
+    </ul>
+    <p><img src="img/gorsel_04.png" width="600"></p>
+    <p>Görsel 4. Bilgeİş AEK Portalı.</p>
+    <p><img src="img/gorsel_05.png" width="600"></p>
+    <p>Görsel 5. Akademi (Anadolu Üniversitesi) AEK Portalı.</p>
+    <h4>Üst Veri Modelinin Oluşturulması</h4>
+    <p>AEK üst veri modeli, mevcut üst veri standart tanımlamaları üzerine inşa edilmiştir. Üst veri modeli için aşağıda listelenen ve dünyada kabul görmüş iki temel üst veri standardı kullanılmıştır:</p>
+    <ol>
+      <li>DCMI (Dublin Core Metadata Initiative) (Dublin Core Üst Veri Girişimi) https://www.dublincore.org/specifications/dublin-core/dcmi-terms/</li>
+      <li>LRMI (Learning Resource Metadata Initiative) (Öğrenme Kaynakları Üst Veri Girişimi) https://www.dublincore.org/specifications/lrmi/lrmi_terms/</li>
+    </ol>
+    <p>Mevcut üst veri standartları farklı sistemlerin geliştirilebilmesi için çok geniş kapsamda ifadeler (terms) sunar. Belirli bir konu üzerinde geliştirilecek sistemlerde, AEK’nda olduğu gibi, standardı oluşturan ifadelerden (tanımlardan) ihtiyaç duyulmayanlar çıkartılabilir ya da yeni ifadeler eklenebilir. Bu ekleme ve çıkarmalar sonrasında yeni üst veri şeması oluşur ve sistemin genel tasarımı (dizinleme çalışmalarının gerçekleştirileceği veri tabanı vb.) bu şema üzerinde yapılır, geliştirilen sistemin diğer sistemler ile eşgüdüm içinde çalışmasını bu şema sağlar.</p>
+    <p>Araştırmada AEK için üst veri modeli oluşturulurken mevcut ifadelerin seçiminde kullanılacak kriterler mevcut uluslararası üst veri standartları (“DCMI Metadata Terms”, t.y.) göz önünde bulundurularak ve uzman görüşleri de alınarak belirlenmiş ve aşağıda listelenmiştir:</p>
+    <ol>
+      <li>Yaygın kullanım: Dijital ortamdaki nesnelerin tanımlamalarında yaygın olarak kullanılıyor mu? Bu kriterde çevrimiçi kütüphane kataloglarında, süreli yayın veri tabanlarında ve akademik dizinlerde tanımlama için tercih edilen üst veri ifadeleri yaygın kullanım olarak değerlendirilmektedir.</li>
+      <li>Kontrollü liste: İlgili üst veri alanına önceden belirlenmiş bir liste içinde seçim yapılarak tanımlama gerçekleştirilebiliyor mu? Her türlü veri tabanı uygulamasında öncelikle tercih edilen ilgili veri alanına serbest metin girişi yapılması değil, önceden belirlenmiş veri kümesinde bir seçim yapılmasıdır. Bu veri girişi sırasında yapılabilecek hataları en aza indirir ve sonrasında bilgi erişim açısından anahtar kelime bütünlüğü sağlar.</li>
+      <li>Genellenebilir olma: Farklı yapıya ve biçime sahip AEK tanımlaması için uygun mu? Bu kriterde üst veri ifadesinin çok fazla detaya inen bir yapıda (spesifik) olmaması amaçlanmaktadır. Bunun temel nedeni üst veri alanının mümkün olan en geniş kapsamdaki AEK tanımlamasına imkân sağlamasıdır. Az sayıda AEK için geçerli olacak bir üst veri ifadesi veri girişi ve sonrasındaki bilgi erişim sürecinde performans kaybına yol açacaktır.</li>
+    </ol>
+      <h4>DCMI İfadelerinin Seçimi</h4>
+      <p>DCMI tarafından geliştirilen Üst Veri İfadeleri günümüze kadar farklı sürümler halinde yayınlanmış ve kullanıma sunulmuştur. Araştırmanın gerçekleştirildiği tarihte yayında olan DCMI Üst Veri İfadeleri sürümü 20 Ocak 2020 tarihinde yayınlanan “2020-01-20” kodlu sürümdür (“DCMI: DCMI Metadata Terms”, t.y.). Bu sürümde “DCMI Elements” ve “DCMI Terms” adı altında iki farklı ad alanı (namespace) yayınlanmıştır. Bu ad alanlarından “DCMI Elements” aşağıda listelenen 15 temel ifadeye sahiptir ve “DCMI Terms”e göre üst veri açısından daha genel ve kapsayıcı bir yaklaşım sergilemektedir:</p>
+    <ol>
+    <li>Katkı Sağlayan (Contributor): Kaynağın içeriğine 2. derecede katkıda bulunan kişi ya da kuruluşlar.</li>
+    <li>Kapsam (Coverage): Kaynağın konum ya da zaman özellikleri.</li>
+    <li>Yaratıcı (Creator): Kaynağın içeriğinden 1. derecede sorumlu kişi ya da kuruluş.</li>
+    <li>Tarih (Date): Kaynağın yaşam döngüsündeki önemli bir olay veya belirli bir süre.</li>
+    <li>Tanım (Description): Kaynağın içeriği hakkında bilgi veren özet, grafik anlatım, düz metin vb.</li>
+    <li>Biçim (Format): Kaynağın dosya biçimi, fiziksel ortamı veya boyutları.</li>
+    <li>Tanımlayıcı (Identifier): URL, URN gibi kaynağı tanımlayıcı bir referans bilgisi ya da adres.</li>
+    <li>Dil (Language): Kaynağın dili.</li>
+    <li>Yayıncı (Publisher): Kaynağı kullanıma sunmaktan sorumlu kişi ya da kuruluş.</li>
+    <li>İlişki (Relation): Kaynakla ilişkili URI bağlantısı.</li>
+    <li>Haklar	(Rights): Kaynak ile ilgili kullanım şartları.</li>
+    <li>Kaynak (Source): Açıklanan kaynağın türetildiği ilgili bir kaynak.</li>
+    <li>Konu (Subject): Kaynağın konusu.</li>
+    <li>Başlık (Title): Kaynağa verilen isim.</li>
+    <li>Tip (Type): Kaynağın türü.</li>
+    </ol>
+    <p>“DCMI Terms” ise “DCMI Elements” tanımlamalarını temel alan ve bu alanları detaylandıran toplamda 55 ifade içermektedir. Bu 55 ifadenin bir çoğu “DCMI Elements” içinde geçen ifadelerin alt ifadeleri olarak belirlenmiştir. AEK için belirlenecek üst veri alanlarının çok detaylı olmaması amaçlanmıştır. Bunun temel sebebi üst veri tanımlama sürecinin mümkün olduğu kadar basit ve anlaşılır halde olmasını sağlamaktır. Bu açıdan “DCMI Terms” ifadeleri yerine “DCMI Elements” içinde yer alan 15 ifade içinden öncelikli olarak seçim yapılmıştır.</p>
+    <p>İfadelerin seçimi yapılırken yukarıda tanımlanmış olan seçim kriterlerine ek olarak farklı üst veri setlerinde kesişen ifadeler dikkate alınmış, amaçların örtüşmesi ve farklı kavramların ortak bir anlayışa indirgenmesi sağlanmıştır. AEK üst veri modelinde yer alacak DCMI ifadelerinin seçimi ile ilgili detaylar Tablo 1’de verilmiştir.</p>
+    <p>Tablo 1: “DCMI Elements” Üst Veri Seti Seçim Kriterleri</p>
+    <p><img src="img/tablo_01.png" width="600"></p>
+    <p>“DCMI Elements” üst veri seti içerisinden toplamda 4 ifade seçilmemiştir. Bu 4 ifadeden “Kapsam” ve “Kaynak” AEK açısından genellenebilir olmamaları açısından, “İlişki” ve “Haklar” ise örtüşen amaçlar açısından seçim dışı bırakılmıştır. “Kapsam” üst veri ifadesi zamansal ve mekânsal tanımların yapılması için kullanılmaktadır. AEK açısından değerlendirildiğinde kaynağın mekânsal konumunu ve tarihi sürecini tanımlamak yaygın olarak kullanılabilecek bir özellik değildir. “Kaynak” üst veri ifadesi kaynağın oluşturulurken temel alındığı diğer kaynakları ifade etmektedir. Bu veri alanı AEK içinde genelde kaynakça adında ayrı bir bölüm olarak hazırlanmaktadır ve içinde kimi zaman onlarca farklı kaynağa atıf içermektedir. Üst veri tanımlama sürecinde bu tarz bir veri girişi uygulama açısından pratik değildir ve süreci çok zorlaştırmaktadır. “İlişki” üst veri ifadesi kaynağın diğer kaynaklar ile arasındaki ilişkinin tanımlandığı alandır. Kaynaklar arasındaki ilişkinin tanımlanması araştırma kapsamında makine öğrenmesi algoritmaları yardımıyla otomatik olarak oluşturulacağı için örtüşen amaç olarak değerlendirilmiş ve seçim dışı bırakılmıştır. “Haklar” üst veri ifadesi kaynağın kullanım şartlarını belirleyen bir alandır. Bu üst veri alanı açık lisanslar ile ilgili Creative Commons lisanslarının tanımlanmasında kullanılacak alan ile amaç açısından örtüşmektedir ve seçim dışı bırakılmıştır. Sonuç olarak “DCMI Elements” üst veri setinden toplam 11 ifade seçilmiştir.</p>
+    <h4>LRMI İfadelerinin Seçimi</h4>
+    <p>Öğrenme Kaynakları Üst Veri Girişimi LRMI (Learning Resource Metadata Initiative) AEK için kullanılabilecek üst veri tanımlayıcı özelliklerini geliştirmiş ve bu özellikleri “LRMI Version 1.1” adı altında 2014 yılında yayınlamıştır (“LRMI Version 1.1”, t.y.). Araştırmanın yapıldığı tarihte yayında olan sürüm 1.1’de aşağıda listelenen 8 özellik bulunmaktadır:</p>
+    <ol>
+      <li>Eğitsel Uyum (educationalAlignment): Var olan bir eğitimsel çerçeve ile uyum.</li>
+      <li>Eğitsel Kullanım (educationalUse): Eğitim bağlamında çalışmanın amacı, kullanım şekli.</li>
+      <li>İhtiyaç Duyulan Süre (timeRequired): Hedef kitlenin bu öğrenme kaynağını tamamlamak için ihtiyaç duyduğu süre.</li>
+      <li>Tipik Yaş Aralığı (typicalAgeRange): Son kullanıcıya yönelik olan içeriğin tipik yaş aralığı.</li>
+      <li>Etkileşim Tipi (interactivityType): Öğrenme kaynağı tarafından desteklenen baskın öğrenme yöntemi.</li>
+      <li>Öğrenim Kaynağı Tipi (learningResourceType): Öğrenme kaynağını karakterize eden baskın tip veya tür.</li>
+      <li>Kullanım Hakları URL (useRightsUrl): Eser sahibinin kullanım haklarını belirlediği URL.</li>
+      <li>Temel Alınan URL (isBasedOnUrl): Kaynağın oluşturulmasında kullanılan kaynak.</li>
+    </ol>
+    <p>Özellikler arasından seçim yapılırken daha önce DCMI üst veri ifadelerinin seçiminde kullanılan kriterler temel alınmıştır. AEK üst veri modelinde yer alacak LRMI özelliklerinin seçimi ile ilgili detaylar Tablo 2’de verilmiştir.</p>
+    <p>Tablo 2: LRMI Özellikleri Seçim Kriterleri</p>
+    <p><img src="img/tablo_02.png" width="600"></p>
+    <p>LRMI özellikleri içerisinden toplamda 2 ifade seçilmemiştir. Bu ifadelerden “Eğitsel Uyum” yaygın kullanılmaması ve AEK açısından genellenebilir olmaması nedeniyle seçilmemiştir. “Temel Alınan URL” ise DCMI ifadelerinden “Kaynak” ifadesi ile aynı nedenlerden dolayı seçim dışı bırakılmıştır. “Etkileşim Tipi” ve “Öğrenim Kaynağı Tipi” DCMI içindeki “Tip” ifadesi ile tanımlanabilmektedir ve örtüşen amaç kapsamında değerlendirilmektedir. “Kullanım Hakları URL” özelliği ise yine DCMI içindeki “Haklar” ifadesinde olduğu gibi açık lisanslar ile ilgili Creative Commons lisanslarının tanımlanmasında kullanılacak alan ile amaç açısından örtüşmektedir. Sonuç olarak “LRMI Version 1.1” özellikleri içinden toplam 3 ifade seçilmiştir.</p>
+    <p>LRMI 2014 yılında DCMI bünyesine katılmış ve bu tarihten itibaren DCMI’nin görev grubu olarak üst veri setini geliştirmeye devam etmiştir (“DCMI: LRMI Task Group”, t.y.). LRMI Görev Grubu, 12 Kasım 2020 tarihinde LRMI Üst Veri İfadeleri’nin “2020-11-12” kodlu sürümü yayınlamıştır (“DCMI: LRMI Terms”, t.y.). Ocak 2022 tarihi itibariyle yayında olan güncel sürüm budur. Araştırma kapsamında sürüm “1.1” ile başlayan üst veri modelinin tasarım süreci sürüm “2020-11-12” ile devam etmiştir. Tasarım süreci içerisinde seçilen LRMI özellikleri üzerinde yeni sürüme uyum sağlaması açısından güncellemeler yapılmıştır. Bu güncellemeler dahilide “Tipik Yaş Aralığı” özelliği “Hedef Kitle” ifadesi ile değiştirilmiştir. Buna ek olarak AEK erişilebilirlik özelliklerini (engelli kullanıcılara sağlanan ek imkanları) tanımlayabilmek için yeni sürümde yer alan “Erişilebilirlik Özelliği (AccessibilityFeature)” üst veri modeline dahil edilmiştir.</p>
+    <h4>Üst Veri Modeline Açık Lisansların Eklenmesi</h4>
+    <p>Bir eğitim kaynağının AEK olarak tanımlanabilmesi için herhangi bir açık lisans ile lisanslanması gerekmektedir. Aksi halde bu kaynağın açık olarak değerlendirilebilmesi kullanıcıların mevcut durumu yorumlamasına ve açık kültüre bakış açılarına bağlı olarak değişebilir. Lisanslama işlemi en basit şekilde kaynağın telif hakkı sahibi tarafından kullanım şartlarının belirlenmesi olarak ifade edilebilir. Açık lisansların kullanımı beyana dayanmaktadır ve herhangi bir otorite tarafından uygulanan bir onay süreci bulunmamaktadır. Hangi ortamda olursa olsun (çevrimiçi ya da değil) kaynağa eklenecek lisans belirteçleri (ikon ve / veya metinsel ifadeler) ile lisanslama işlemi kolaylıkla gerçekleştirilebilir. Özellikle dijital ortam için lisanslama sürecini kolaylaştıran araçlar bulunmaktadır ve bunlar kullanıcıların hizmetine sunulmaktadır.</p>
+    <p>Belirli standartlar çerçevesinde hazırlanmış ve genel kabul görmüş açık lisansların kullanımı hem kaynağı paylaşanlar için hem de kaynağı kullanacaklar için önemli avantajlar sağlamaktadır. Bu avantajlar üç ana grup altında toplanabilir:</p>
+    <ol>
+      <li>İnternet üzerinden kaynağa erişecek olan farklı düzey ve özelliğe sahip kullanıcılar için ortak bir paylaşım, kullanım, dağıtım ve yeniden paylaşım dili oluşturulmasını sağlayabilmek.</li>
+      <li>Kaynak kullanımında ve paylaşımında yaşanabilecek olası hukuksal sorunların çözümü için gerekli hukuksal altyapıya (lisans sözleşmesi) sahip olmak.</li>
+      <li>Arama motorları ve harmanlama sistemlerinin kaynağı dizinlerken lisans bilgilerini de dizinleyebileceği teknik altyapıya (üst veriye) sahip olmak.</li>
+    </ol>
+    <p>Yukarıda listelenen avantajlar günümüzde açık lisanslardan beklenen minimum özellikler haline gelmiştir. Araştırma kapsamında AEK üst veri modeline entegre edilmesi planlanan açık lisanslar bu özellikleri tam olarak karşılayan ve dünya çapında yaygın kullanımı olan Creative Commons lisanslarıdır. Creative Commons Türkiye bu oluşumu “sağladığı özgür yasal araçlar ile yaratıcılığın ve bilginin paylaşımına, tekrar kullanımına olanak veren kâr amacı gütmeyen bir organizasyondur” şeklinde tanımlamaktadır (“Creative Commons Hakkında”, t.y.).</p>
+    <p>CC tarafından kullanıma sunulan 6 tür lisans bulunmaktadır ve bu lisanslara ek olarak bir de kamu malı tahsisi yapılabilmektedir. CC lisansları “her hakkı saklı” yaklaşımı yerine “bazı hakları” saklı yaklaşımını benimser ve eser sahibine telifi kendinde olan kaynak ile ilgili kullanım şartlarını belirleyerek topluma sunma imkânı verir. CC0 (CC Sıfır - CC Zero) olarak ifade edilen kamu malı tahsisi haricinde diğer 6 lisansta orijinal eserin (kaynağın) sahibine atıfta bulunmak zorunludur. Her CC lisansı 3 katmandan oluşur. Bu katmanlar:</p>
+    <ul>
+      <li>Yasal Kod (Legal Code): Lisansın detaylandırılmış hukuksal metnidir. Lisans sözleşmesi ile ilgili tüm ayrıntılar bu dokümanda yer alır.</li>
+      <li>İnsan Tarafından Okunabilen Lisan Özeti (Human Readable Deed): Son kullanıcı için lisans şartlarının bir özetini verir. Simge kullanımı dilden bağımsız bir tanınırlık sağlamış olur.</li>
+      <li>Makine Tarafından Okunabilen Üst Veri (Machine Readable Meta Data): Arama motorları ve harmanlama sistemleri için kaynağın sahip olduğu açık lisans bilgisini üst veri olarak sunar.</li>
+    </ul>
+      <p>Araştırma kapsamında AEK üst veri modeline entegre edilecek olan açık lisans tanımlaması CC REL (Creative Commons Rights Expression Language) adı verilen üst veri setinden alınmıştır (CC REL, 2018). CC REL’den alınan “Lisans (License)” ifadesi yukarıda detaylı olarak açıklanan 3 lisans katmanının da AEK ile ilişkilendirilebilmesini sağlamaktadır. Bir AEK için tanımlanabilecek CC açık lisansları aşağıda listelenmiştir:</p>
+      <ol>
+        <li>CC0 1.0 (CC Sıfır): Kamu Malı tahsisi olarak kullanılır. Geçerli sürümü 1.0’dır. Bu lisans kapsamında telif hakkı sınırlaması yoktur, kaynak atıf vermeden ticari amaç da dahil olmak üzere kopyalanabilir, düzenlenebilir, dağıtılabilir ve yeniden kullanılabilir.</li>
+        <li>CC BY 4.0 (Atıf): CC’nin en özgür lisansıdır. Geçerli sürümü 4.0’dır. Uluslararası olarak kullanılabilir. Resmi olarak Türkçe çevirisi yayınlanmıştır. Kaynak, atıf vermek kaydıyla ticari amaç da dahil olmak üzere kopyalanabilir, düzenlenebilir, dağıtılabilir ve yeniden kullanılabilir.</li>
+        <li>CC BY-SA 4.0 (Atıf-AynıLisanslaPaylaş): Geçerli sürümü 4.0’dır. Uluslararası olarak kullanılabilir. Resmi olarak Türkçe çevirisi yayınlanmıştır. Kaynak, atıf vermek ve aynı lisansı devam ettirmek kaydıyla ticari amaç da dahil olmak üzere kopyalanabilir, düzenlenebilir, dağıtılabilir ve yeniden kullanılabilir.</li>
+        <li>CC BY-ND 4.0 (Atıf-Türetilemez): Geçerli sürümü 4.0’dır. Uluslararası olarak kullanılabilir. Resmi olarak Türkçe çevirisi yayınlanmıştır. Kaynak, atıf vermek kaydıyla ticari amaç da dahil olmak üzere kopyalanabilir, dağıtılabilir ve yeniden kullanılabilir ancak üzerinde hiçbir değişiklik yapılamaz.</li>
+        <li>CC BY-NC 4.0 (Atıf-GayriTicari): Geçerli sürümü 4.0’dır. Uluslararası olarak kullanılabilir. Resmi olarak Türkçe çevirisi yayınlanmıştır. Kaynak, atıf vermek kaydıyla ticari amaç haricinde kopyalanabilir, düzenlenebilir, dağıtılabilir ve yeniden kullanılabilir.</li>
+        <li>CC BY-NC-SA 4.0 (Atıf-GayriTicari-AynıLisanslaPaylaş): Geçerli sürümü 4.0’dır. Uluslararası olarak kullanılabilir. Resmi olarak Türkçe çevirisi yayınlanmıştır. Kaynak, atıf vermek ve aynı lisansı devam ettirmek kaydıyla ticari amaç haricinde kopyalanabilir, düzenlenebilir, dağıtılabilir ve yeniden kullanılabilir.</li>
+        <li>CC BY-NC-ND 4.0 (Atıf-GayriTicari-Türetilemez): CC’nin en az özgürlük sağlayan lisansıdır. Geçerli sürümü 4.0’dır. Uluslararası olarak kullanılabilir. Resmi olarak Türkçe çevirisi yayınlanmıştır. Kaynak, atıf vermek kaydıyla ticari amaç haricinde kopyalanabilir, dağıtılabilir ve yeniden kullanılabilir, ancak üzerinde hiçbir değişiklik yapılamaz.</li>
+      </ol>
+      <h4>Üst Veri Modeline İlişkin Uzman Görüşleri</h4>
+      <p>DCMI, LRMI ve CC-REL’den seçilen ifadeler sonucunda toplam 16 üst veri alanından oluşan AEK üst veri modeli oluşturulmuştur. Bu taslak modeldeki alanlar ve alanlara ilişkin detaylar konusunda alanında uzman üç öğretim üyesinden görüş alınmıştır. Bu uzmanların her biri ile ayrı ayrı çevrimiçi görüşmeler yapılmıştır. Bu görüşmeler ortalama olarak bir saat sürmüştür. Görüşmeler uzmanlardan izin alınarak daha sonra yorumlama sürecinde kullanmak amacıyla kayıt altına alınmıştır.</p>
+      <p>Uzmanlar genel anlamda olumlu görüşler bildirmiş belirli noktalarda geliştirme konusunda önerilerde bulunmuşlardır.</p>
+      <h5>Uzman Görüşü 1</h5>
+      <p>Uzman görüşü 5 Ekim 2020 tarihinde video konferans yöntemi ile çevrimiçi olarak alınmış ve kaydedilmiştir. Görüşme 52 dakika 42 saniye sürmüştür. Öncelikle yapılan çalışmalar ile ilgili genel bilgi verilmiş ve sonrasında araştırma kapsamında AEK tanımlamaları için belirlenen üst veri alanları ile ilgili görüş istenmiştir. Uzman tarafından hem araştırmanın genel yapısı ile ilgili, hem de AEK üst verileri ile ilgili aşağıda listelenen geri bildirimler alınmıştır:</p>
+      <ul>
+        <li>AEK’ya kolay erişim sağlayabilmek öğrenenler açısından önemli bir ihtiyaçtır. Öğrenenlerin AEK ile ilgili talepleri konusunda yapılan araştırmalarda AEK portallarının (Ör: Yök Dersleri Platformu) sorgulanabilir olmayışının erişimde büyük sorunlara yol açtığı sonucu ortaya konulmaktadır.</li>
+        <li>AEK üst verilerinin belirli bir standarda göre oluşturulması ve kaynakların bu üst veriler ile dizinlenmesi erişimde yaşanan sorunların çözümü açısından önemli bir başlangıç olacaktır.</li>
+        <li>Yapılan araştırma çok özgün bir çalışma. Bu araştırma sonucunda ortaya konulacak modelin çok önemli olduğunu düşünüyorum.</li>
+        <li>Veri giriş formunda AEK üst verileri ile ilgili detaylı açıklamalara yer verilebilir. Örneğin kaynak tipleri ile ilgili tanımlara ihtiyaç var.</li>
+        <li>Eğitsel kullanım ile ilgili üst veri alanında seçenekler (mevcut sınıflandırma) tam olarak anlaşılmamakta.</li>
+        <li>Öğrenim kazanımları ile ilgili bir üst veri kümesi olabilir.</li>
+        <li>Etkileşim tipi alanı gerekli bir alan olarak gözükmüyor bu alan kullanılmayabilir.</li>
+      </ul>
+      <h5>Uzman Görüşü 2</h5>
+    <p>Uzman görüşü 21 Kasım 2020 tarihinde video konferans yöntemi ile çevrimiçi olarak alınmış ve kaydedilmiştir. Görüşme 37 dakika 25 saniye sürmüştür. Öncelikle yapılan çalışmalar ile ilgili genel bilgi verilmiş ve sonrasında araştırma kapsamında AEK tanımlamaları için belirlenen üst veri alanları ile ilgili görüş istenmiştir. Uzman tarafından hem araştırmanın genel yapısı ile ilgili, hem de AEK üst verileri ile ilgili aşağıda listelenen geri bildirimler alınmıştır:</p>
+    <ul>
+      <li>AEK’nın son güncellendiği tarih bilgisi yeterli olacaktır. Burada ayrıca bir oluşturulma tarihine gerek olmayabilir.</li>
+      <li>Eğitsel kullanım bölümüne ihtiyaç duyulmayabilir. Mevcut hali ile çok anlamlı bulunmuyor.</li>
+      <li>Erişilebilirlik seçeneği daha detaylı olabilir.</li>
+      <li>Akreditasyon ile ilgili bir alan olabilir mi?</li>
+      <li>Açık lisansın belirlenmesi zorunlu mu?</li>
+    </ul>
+    <h5>Uzman Görüşü 3</h5>
+    <p>Uzman görüşü 21 Kasım 2020 tarihinde video konferans yöntemi ile çevrimiçi olarak alınmış ve kaydedilmiştir. Görüşme 23 dakika 25 saniye sürmüştür. Öncelikle yapılan çalışmalar ile ilgili genel bilgi verilmiş ve sonrasında araştırma kapsamında AEK tanımlamaları için belirlenen üst veri alanları ile ilgili görüş istenmiştir. Uzman tarafından hem araştırmanın genel yapısı ile ilgili, hem de AEK üst verileri ile ilgili aşağıda listelenen geri bildirimler alınmıştır:</p>
+      <ul>
+        <li>Ölçme ve değerlendirmeye yönelik kriterlerin belirlenebileceği bir üst veri alanı olması iyi olabilir.</li>
+        <li>AEK içeriğini oluşturan kişiler ile ilgili Orcid vb. bir tanımlayıcı olabilir mi?</li>
+        <li>AEK için açık lisansların tanımlanması çok önemli. Bu alan mutlaka zorunlu olan olmalı ve açık lisans tanımlaması mutlaka yapılmalı.</li>
+      </ul>
+    <p>Üst veri setlerinin tasarım süreçleri kullanıldıkları süre boyunca devam eder. Yaşayan bir organizma gibi içinde bulundukları zaman diliminin ihtiyaçları doğrultusunda kapsam açısından genişleyebilir ya da daralabilirler. Alınan uzman görüşlerinden üst veri modelinde değişiklik yapılması konusundaki öneriler ve bu konuda atılan adımlar Tablo 3’de özetlenmiştir.</p>
+    <p>Tablo 3 Uzman Görüşlerinin Üst Veri Modeline Yansıması</p>
+    <p><img src="img/tablo_03.png" width="600"></p>
+    <p>Tüm bu çalışmalar sonucunda ve alınan uzman görüşleri doğrultusunda DCMI, LRMI ve CC-REL’den seçilen ifadeler ile AEK üst veri modelinin taslak yapısı oluşturulmuştur. Bu taslak model toplam 16 üst veri alanından oluşmaktadır. Araştırma kapsamında tasarlanan AEK üst veri modelinin en güncel şekli üst veri modeli şeması olarak Tablo 4’de yer almaktadır. </p>
+    <p>Tablo 4 AEK Üst Veri Modeli Şeması</p>
+    <p><img src="img/tablo_04.png" width="600"></p>
+    <h4>acikders.net Platformunun Geliştirilmesi</h4>
+    <p>Araştırma kapsamında yer alan amaçların gerçekleştirilebilmesi için geliştirilen “acikders.net” platformu, önyüzünde (frontend) HTML5 çerçeve yapısına sahip, duyarlı (responsive) Web tasarımı ilkeleriyle uyumlu, arka planda (backend) ise Python programlama dilini ve Django Web kütüphanesini kullanan bir mimariye sahiptir. Platform acikders.net adresinde erişime açıktır (Görsel 6).</p>
+    <p><img src="img/gorsel_06.png" width="800"></p>
+    <p>Görsel 6. acikders.net Platformu</p>
+    <p>Platformun tüm kaynak kodlarına ve geliştirme süreci ile ilgili tüm ayrıntılara GitHub üzerindeki https://github.com/orcunmadran/net.acikders.web kod deposundan erişilebilir. Platformun kaynak kodları MIT lisansı ile lisanslanmıştır ve özgür yazılım kapsamındadır (Görsel 7).</p>
+    <p><img src="img/gorsel_07.png"></p>
+    <p>Görsel 7. acikders.net Kaynak Kod Deposu.</p>
+    <p>acikders.net üç ana fonksiyona sahiptir:</p>
+    <ol>
+      <li>Veri tabanına kayıt ve dizinleme: AEK ile ilgili tanımlamaların tasarlanan üst veri modeline göre veri tabanına kaydedilerek dizinlenmesi.</li>
+      <li>Arama ve bilgiye erişim: Dizinleme işlemi tamamlanan AEK veri tabanı üzerinde arama yapılarak kullanıcıların bilgiye erişim ihtiyaçlarının karşılanması.</li>
+      <li>Üst veri tanımlamalarının farklı platformlarda kullanılması: Üst veri formu aracılığıyla yapılan AEK tanımlamalarının harmanlama sistemleri ve arama motorları gibi farklı platformlar birlikte kullanılmasının sağlanması.</li>
+    </ol>
+    <h4>Veri Tabanının Oluşturulması ve Dizinleme</h4>
+    <p>acikders.net için oluşturulan veri tabanı AEK üst veri şemasına göre tasarlanmıştır. Şemada yer alan 16 alanın her biri AEK üst veri tablosu içindeki bir alana karşılık gelmektedir. Bu 16 alana ek olarak her bir AEK kaydı için benzersiz bir AEK kimliği ve zaman damgası da tabloda yer almaktadır (Görsel 8).</p>
+    <p><img src="img/gorsel_08.png"></p>
+    <p>Görsel 8. AEK Üst Veri Tablosu.</p>
+    <p>acikders.net üzerinde AEK üst verilerinin oluşturulmasını sağlamak için bir üst veri giriş formu yer almaktadır (Görsel 9). Bu forma hem kayıtlı kullanıcılar hem de portalı misafir olarak ziyaret eden kullanıcılar erişebilmektedir. Her iki tip kullanıcı da AEK ile ilgili bilgileri girdikten sonra standartlara göre otomatik olarak oluşturulan AEK üst verilerini kopyalayıp istedikleri platformda (kişisel Web sitelerinde, öğrenme yönetim sistemlerinde) kullanabilmekte ancak sadece kayıtlı kullanıcılar bu verileri veri tabanına kayıt edebilmektedirler. Formda 16 üst veri alanına 4 ana bölüm altında yer verilmiştir:</p>
+    <ol>
+      <li>İçerik bölümü: Başlık, Konu, Tanım, Kaynak Tipi.</li>
+      <li>Entellektüel katkı bölümü: Yaratıcı(lar), Yayıncı(lar), Katkı Sağlayan(lar), Kaynağın Açık Lisansı.</li>
+      <li>Yapısal bölüm: Tarih, Dil, Dosya Biçimleri, Tanımlayıcı Adres (URL).</li>
+      <li>Eğitsel bölüm: Hedef Kitle, Eğitsel Kullanım, Erişilebilirlik Özelliği, İhtiyaç Duyulan Süre (Saat).</li>
+    </ol>
+      <p>Bu bölümlendirmeler veri girişini yapan kullanıcının veri alanları ile ilgili kavramsal yapıyı daha iyi anlayabilmesi için oluşturulmuştur.</p>
+      <p><img src="img/gorsel_09.png"></p>
+      <p>Görsel 9. AEK üst veri giriş formu (http://acikders.net/metaform/).</p>
+      <p>Üst veri giriş formunda veri girişi sırasında kullanıcılara yardımcı olacak ek özellikler yer almaktadır. Her bir veri giriş alanının üst bölümünde o giriş alanı ile ilgili detaylı bilgiye erişilmesini sağlayan ve “i” ile ifade edilen bir yardım düğmesi bulunmaktadır (Görsel 10). Buna ek olarak veri alanının zorunlu alan olup olmadığı ile ilgili bilgi form üzerinde yer almakta ve kullanıcının bu alanı boş geçmesini engelleyecek kontrol sistemi bulunmaktadır.</p>
+      <p><img src="img/gorsel_10.png"></p>
+      <p>Görsel 10. Yardım Düğmesi Uygulama Örneği.</p>
+      <p>Form üzerinde yer alan veri giriş alanları farklı teknik özelliklere sahip alanlardan oluşmaktadır. Bu teknik özellikler veri girişinin mümkün olan en az hatayla gerçekleşmesini sağlamak amacıyla kullanılmaktadır. Veri giriş alanlarının zorunlu alan olup olmadığı, teknik özellikleri ve veri seçenekleri Tablo 5’de yer almaktadır.</p>
+      <p>Tablo 5 Veri Giriş Alanlarının Teknik Özellikleri ve Veri Seçenekleri</p>
+      <p><img src="img/tablo_05.png" width="600"></p>
+      <p>AEK Üst Veri Giriş Formu’nda veri girişi sırasında yaşanabilecek sorunları en aza indirmek için mümkün olan alanlarda kontrollü listeler kullanılmıştır. Bu kontrollü listeler oluşturulan veri tabanı içindeki kayıtların veri bütünlüğünü sağlamaya yardımcı olmakta ve klavyeden yapılan veri girişi hatalarını engellemektedir. Kontrollü listelerin sahip oldukları özellikler; liste öğeleri, öğelerin özellikleri ve listelerin oluşturulduğu kaynaklar aşağıda maddelenerek detaylandırılmıştır:</p>
+      <ol>
+        <li>Tip: Bu üst veri alanında kullanılan kontrollü liste Dublin Core tarafından oluşturulmuş “DC Types” adlı listedir (DCMI Type Vocabulary, 2020). AEK içinde ne tipte içerik bulunduğu bu liste ile tanımlanabilmektedir. Listede 8 öğe yer almaktadır:</li>
+        <ul>
+          <li>Etkileşimli Kaynak: Kullanıcının anlayarak, kullanarak ve deneyimleyerek etkileşimde bulunduğu kaynak (çoklu ortam öğrenme nesneleri, simülasyon, sanal gerçeklik uygulamaları).</li>
+          <li>Etkinlik: Keşfetme amaçlı etkinlikler (sergi ve müze ziyaretleri, webinar, konferans, çalıştay).</li>
+          <li>Fiziksel Nesne: Cansız, üç boyutlu bir nesne veya madde.</li>
+          <li>Görsel: Metin dışındaki görsel gösterimler (fiziksel nesnelerin fotoğrafları, resimler, müzik notaları).</li>
+          <li>Hareketli Görsel: Art arda gösterildiğinde hareket izlenimi veren bir dizi görsel sunum (animasyonlar, filmler, videolar).</li>
+          <li>Hareketsiz Görsel: Durağan görsel gösterim (grafik tasarımlar, çizimler, planlar, haritalar).</li>
+          <li>Koleksiyon: Bir araya getirilen (gruplanan) kaynaklar.</li>
+          <li>Metin: Öncelik olarak okuma amacıyla oluşturulan kaynak (ders notları, kitaplar, makaleler, gazeteler, dergiler).</li>
+          <li>Servis: Bir veya daha fazla işlev sağlayan bir sistem (web sitesi, eğitim portalı, öğrenme yönetim sistemi).</li>
+          <li>Ses: Öncelik olarak duyma amacıyla oluşturulan kaynak (müzik, ortam sesleri, kaydedilmiş konuşmalar).</li>
+          <li>Veri seti: Tanımlanmış bir yapıda kodlanmış veriler (veri tabanları, listeler, tablolar).</li>
+          <li>Yazılım: Kaynak kod veya derlenmiş bir bilgisayar programı.</li>
+        </ul>
+        <li>Lisans: Bu üst veri alanında kullanılan kontrollü listede Creative Commons tarafından oluşturulan açık lisanslar yer almaktadır (About CC Licenses, 2019). Listede 7 öğe yer almaktadır:</li>
+        <ul>
+          <li>CC0 1.0: Kamu Malı lisansı.</li>
+          <li>CC BY 4.0: Atıf lisansı.</li>
+          <li>CC BY-SA 4.0: Atıf, Aynı Lisansla Paylaş lisansı.</li>
+          <li>CC BY-ND 4.0: Atıf, Türetilemez lisansı.</li>
+          <li>CC BY-NC 4.0: Atıf, Gayri Ticari lisansı.</li>
+          <li>CC BY-NC-SA 4.0: Atıf, Gayri Ticari, Aynı Lisansla Paylaş lisansı.</li>
+          <li>CC BY-NC-ND 4.0: Atıf, Gayri Ticari, Türetilemez lisansı.</li>
+        </ul>
+        <li>Hedef Kitle: Bu üst veri alanında kullanılan kontrollü liste OER Commons portalında kullanılan Eğitim Seviyeleri (Education Levels) temel alınarak araştırmacılar tarafından oluşturulmuştur ve uzman görüşleri alınarak son hali verilmiştir (Education Levels, 2018). Listede 5 öğe bulunmaktadır:</li>
+        <ul>
+          <li>Okul Öncesi: İlkokul öncesi dönemde yer alan çocukları kapsamaktadır.</li>
+          <li>İlköğretim: 1. sınıftan 8. sınıfa kadar olan öğrencileri kapsamaktadır.</li>
+          <li>Ortaöğretim: Lise ve dengi okullarda okuyan öğrencileri kapsamaktadır.</li>
+          <li>Yükseköğretim: Meslek yüksek okulu ve üniversitelerin lisans, yüksek lisans ve doktora programlarında okuyan öğrencileri kapsamaktadır.</li>
+          <li>Yaşam Boyu Öğrenme: Yaş ve öğrenim düzeyinden bağımsız olarak formal eğitim sistemi dışında yer alan ve öğrenme faaliyetlerine bir şekilde devam eden tüm öğrenenleri kapsamaktadır.</li>
+        </ul>
+        <li>Eğitsel Kullanım: Bu üst veri alanında kullanılan kontrollü liste literatür taraması sırasında eğitim kaynaklarının sınıflandırılması ile ilgili çalışmalar temel alınarak araştırmacılar tarafından oluşturulmuş ve uzman görüşleri doğrultusunda son şekli verilmiştir. Listede 4 öğe yer almaktadır:</li>
+        <ul>
+          <li>Bireysel öğrenme: Kaynak içinde bireysel kullanım için öğeler yer almaktadır.</li>
+          <li>İşbirliğine dayalı öğrenme: Kaynak içinde grup çalışması için öğeler yer almaktadır.</li>
+          <li>Biçimlendirici değerlendirme: Kaynak içinde öğrenim sırasında yaşanan güçlükleri tespit eden ve gerekli yönlendirmeyi yapan öğeler yer almaktadır.</li>
+          <li>Düzey belirleyici değerlendirme: Kaynak içinde öğrenim sonunda kazanılmış davranış ve becerileri ölçen öğeler yer almaktadır.</li>
+        </ul>
+        <li>Erişilebilirlik Özelliği: Bu üst veri alanında kullanılan kontrollü liste OER Commons portalında kullanılan Erişilebilirlik Etiketleri (Accessibility Tags) temel alınarak araştırmacılar tarafından oluşturulmuştur ve uzman görüşleri de alınarak son hali verilmiştir (Accessibility Tags, 2019). Listede 8 öğe yer almaktadır:</li>
+        <ul>
+          <li>Görsel: İçerikte video, grafik, fotoğraf vb. görsel öğeler var.</li>
+          <li>İşitsel: İçerikte ses dosyaları, podcast vb. işitsel öğeler var.</li>
+          <li>Metinsel: İçerikte düz metin öğeleri var.</li>
+          <li>Sesli Açıklama: Tüm görsel içerik (resim, video, grafik) bir ekran okuyucu tarafından okunabilen bir metne sahip.</li>
+          <li>Altyazı: Tüm ses ve video dosyalarında altyazı var.</li>
+          <li>Ayrıntılı Altyazı: İşitme engelliler için altyazı var.</li>
+          <li>Uzun Açıklama: Tüm görseller için alternatif metne ek olarak uzun açıklamalar var.</li>
+          <li>Transkripsiyon: Tüm video ve ses dosyalarının metin sürümleri var.</li>
+        </ul>
+      </ol>
+    <p>Portallarda yer alan bilgiler temel alınarak her bir AEK için 16 üst veri ifadesi veri tabanındaki ilgili alanlara (oluşturulan üst veri giriş formu aracılığıyla) girilmiş ve dizinleme işlemi tamamlanmıştır. Araştırma kapsamında yer alan uygulamalar için test amaçlı olarak üst verileri dizinlenen 200’ün üzerinde açık eğitim kaynağı acikders.net platformunda sorgulanabilir durumdadır. Dizinlenen AEK, Anadolu Üniversitesi Açık Eğitim Portalı AKADEMA ve ODTÜ Mesleki Eğitim Portalı Bilge-İş açık eğitim kaynaklarıdır. Bu portallarda yer alan açık eğitim kaynakları açık lisanslara sahip oldukları ve farklı konu başlıklarında eğitim kaynakları barındırdıkları için tercih edilmiştir.</p>
+    <p>Kullanıcılar tarafından belirlenen anahtar kelimeler ile acikders.net üzerinde sorgulama yapılabilmekte ve sorgu sonuçları listelenebilmektedir (Görsel 11).</p>
+    <p><img src="img/gorsel_11.png"></p>
+    <p>Görsel 11. acikders.net AEK Sorgulama ve Listeleme</p>
+    <p>Listelenen sonuçlardaki herhangi bir kaynak ile ilgili detaylı bilgi (+) düğmesine tıklanarak görüntülenebilmektedir (Görsel 12).</p>
+    <p><img src="img/gorsel_12.png"></p>
+    <p>Görsel 12. AEK Detaylı Bilgilerin Görüntülenmesi.</p>
+    <p>acikders.net içerisinde yer alan bu temel arama özelliği, son kullanıcıların alışık olduğu ve günümüz arama motorlarına benzer bir yaklaşımla, anahtar kelime sayısı arttıkça sonuçları daraltmakta, anahtar kelime sayısı azaldıkça sonuçları genişletmektedir (Görsel 13).</p>
+    <p><img src="img/gorsel_13A.png"></p>
+    <p><img src="img/gorsel_13B.png"></p>
+    <p>Görsel 13. Anahtar Kelime Sayısına Göre Arama Sonuçlarının Daralması ya da Genişlemesi.</p>
+    <h4>Tanımlanan Üst Verilerin acikders.net Dışında Kullanımı</h4>
+    <p>acikders.net platformu içinde oluşturulan ve AEK için üst verilerin oluşturulmasını sağlayan üst veri giriş formu sadece veri tabanına ilgili tanımlamaların kaydedilmesini değil, aynı zamanda farklı harmanlara sistemleri için de üst verilerin bilgisayar tarafından okunabilir formatta üretilmesini sağlamaktadır. Bu sayede acikders.net platformunda herhangi bir kayıt sürecine (oturum açma) dahil olmadan anonim olarak üst veriler Web standartlarına uygun kod yapısı ile oluşturulabilmekte ve bu kodlar istenilen platformlarda (ör: kurumsal ya da kişisel Web sitelerinde) kullanılabilmektedir. Görsel 14’de örnek bir AEK’nın veri giriş formunda tanımlanması görüntülenmektedir. Örnek çalışmada veri giriş formu sistem üzerinde oturum açmadan doldurulmuştur ve “Üst veriyi oluştur!” butonu bu aşamada aktif olarak kullanılabilir durumdadır.</p>
+    <p><p><img src="img/gorsel_14.png"></p></p>
+    <p>Görsel 14. Örnek AEK Üst Veri Formu Girişi.</p>
+    <p>Üst veri formu doldurulduktan sonra “Üst veriyi oluştur!” butonuna tıklandığında eğer zorunlu alanlardan boş bırakılan bir alan yoksa Görsel 15’deki sayfa görüntülenmektedir. Bu sayfada hem üst veri formuna girilen bilgilerin bir özeti yer almakta hem de AEK üst verilerine bir Web sayfasına gömülebilir formatta (XML) erişilebilmektedir. Bu sayfadan üst veri formuna geri dönüş imkânı da bulunmaktadır. Bu açıdan oluşturulan XML kodları üzerinde form aracılığıyla yeniden düzenleme yapmak da mümkün olabilmektedir.</p>
+    <p><p><img src="img/gorsel_15.png" width="800"></p></p>
+    <p>Görsel 15. Örnek AEK Üst Veri Sayfası</p>
+    <p>Sayfa içinde yer alan “HTML kodunu kopyala!” butonuna tıklandığında oluşturulan XML kodu otomatik olarak geçici hafızaya kopyalanır ve kullanıma hazır hale gelir. Bu aşamada kopyalanan kod herhangi bir Web sayfasının içine yerleştirilerek kullanılabilir ve farklı harmanlama sistemleri ya da Web arama motoru örümcekleri tarafından dizinlenebilir.</p>
+    <p>Görsel 16’de test amaçlı oluşturulan bir Web sayfasına yerleştirilen XML kodunun son kullanıcılar tarafından nasıl görüntülendiği yer almaktadır. Bu sayfayı ziyaret eden kullanıcılar XML olarak oluşturulan tanımlamaları değil tek satırlık lisans açıklamasını görüntülemektedirler.</p>
+    <p><p><img src="img/gorsel_16.png" width="800"></p></p>
+    <p>Görsel 16. Test Web Sayfası Son Kullanıcı Görünümü.</p>
+    <p>Sayfayı ziyaret eden harmanlama sistemleri ve arama motorlarının Web örümcekleri ise Görsel 17’de görüntülenen HTML/XML kodlarına erişebilmektedirler.</p>
+    <p><p><img src="img/gorsel_17.png" width="800"></p></p>
+    <p>Görsel 17. Test Web Sayfası HTML Kod Görünümü.</p>
+    <h4>Uygulama 1: Üst Veri Performansının Değerlendirilmesi</h4>
+    <p>Araştırmanın ilk bölümünü oluşturan üst veri modeli tasarımı, platformun geliştirilmesi ve dizinleme çalışmaları ile ilgili kullanıcılardan geri bildirim alabilmek için gerçekleştirilen “Uygulama 1”, Ankara Üniversitesi ve Hacettepe Üniversitesi’nden toplam 52 öğrenciye uygulanmıştır. Uygulama her bir öğrenci için 20-30 dakika aralığında sürmüştür.</p>
+    <p>Uygulama 1’de çevrimiçi anket formu aracılığıyla kullanıcılardan hem acikders.net platformunu arayüz açısından değerlendirmeleri istenmiş hem de yaptıkları aramada listelenen sonuçlardan tatmin olup olmadıkları sorulmuştur.</p>
+    <p>Uygulama 1 değerlendirme formundan alınan veriler analiz edildiğinde:</p>
+    <ul>
+      <li>“Arama motorunun arayüzünü kullanım kolaylığı açısından değerlendiriniz (Kolay 1 - 5 Zor)” maddesine verilen cevapların ortalaması 2,03’tür. (Şekil 4)</li>
+      <p><img src="img/sekil_04.png" width="600"></p>
+      <p>Şekil 4. Arama Motorunun Arayüzünün Kullanım Kolaylığı Açısından Değerlendirilmesi.</p>
+      <li>“Arama motorunun arayüzünü görsel açıdan değerlendiriniz. (Sade 1 - 5 Karmaşık)” maddesine verilen cevapların ortalaması 1,98’dir.  (Şekil 5)</li>
+      <p><img src="img/sekil_05.png" width="600"></p>
+      <p>Şekil 5. Arama Motorunun Arayüzünün Görsel Açıdan Değerlendirilmesi.</p>
+      <li>“Arama motorunun arayüzü ile ilgili genel görüşlerinizi paylaşınız.” açık uçlu maddesine verilen cevaplar konusal olarak aşağıdaki ana başlıklar altında sınıflandırılmıştır:</li>
+      <ul>
+        <li>Arayüzün sade tasarımı kullanımı kolaylaştırmaktadır.</li>
+        <li>Arayüzde farklı renk kombinasyonlarına yer verilebilir.</li>
+        <li>Arayüzde koyu / açık tema kullanımı olabilir.</li>
+        <li>Listelenen sonuçların kategorize edilebilmesi iyi olabilir.</li>
+      </ul>
+      <li>“Listelenen sonuçlarda yer alan açık eğitim kaynakları ile ilgili verilen özet bilgi yeterli miydi?” sorusuna “Evet” yanıtı verenlerin oranı %84,61’dir. Özet bilgiyi yetersiz bulanlardan bu konudaki görüşleri sorulmuştur. Cevaplar konusal olarak aşağıdaki ana başlıklar altında sınıflandırılmıştır:</li>
+      <ul>
+        <li>Özetler uzun. (Özetteki bilgi eksikliğinden çok metnin uzunluğu rahatsız etmiş).</li>
+        <li>İstediğim arama sonuçlarına ulaşamadım. (Bu cevap aslında özet bilgi ile ilgili değil ancak arama sonucunda listeleme olmazsa özet bilgiye de ulaşamamış oluyor).</li>
+      </ul>
+      <li>“Listelenen sonuçlar beklentilerinizi ne ölçüde karşıladı? (Beklentilerimi karşılamadı 1 - 5 Beklentilerimi karşıladı)” sorusuna verilen cevapların ortalaması 3,67’dir. (Şekil 6)</li>
+      <p><img src="img/sekil_06.png" width="600"></p>
+      <p>Şekil 6. Listelenen Sonuçların Beklentileri Ne Ölçüde Karşıladığının Değerlendirmesi.</p>
+
+      <li>“Listelenen sonuçların beklentilerinizi neden karşıladığı ya da neden karşılamadığı ile ilgili olarak genel görüşlerinizi paylaşınız.” açık uçlu maddesine verilen cevaplar konusal olarak aşağıdaki ana başlıklar altında sınıflandırılmıştır:</li>
+      <ul>
+        <li>Arama motoru beklentilerimi karşıladı, arama yaptığım konuda bana faydalı olacağını düşündüğüm AEK’na ulaştım.</li>
+        <li>Arama yaptığım konuda çok az sayıda kaynağa ulaşabildim. (Burada toplam 200 ders içerisinde arama yaptığı konuda halihazırda zaten az sayıda AEK var).</li>
+        <li>Arama yaptığım konuda hiç kaynağa ulaşamadım. (Kullandığı anahtar kelime kombinasyonu doğal dilde aramaya uygun bir yapıda olduğu için sorun yaşanabiliyor ya da o konuda gerçekten AEK sistemde kayıtlı değil).</li>
+      </ul>
+    </ul>
+    <h4>Uygulama 1’den Elde Edilen Veriler Işığında Sistemin İyileştirilmesi</h4>
+    <p>Uygulama 1’de kullanıcılardan önceden belirlenmiş alanlarda acikders.net AEK veri tabanında arama yapmaları istenmiştir. Bu aramada kullandıkları anahtar kelimeler uygulama sırasında toplamıştır. Hangi kullanıcının hangi konu için hangi anahtar kelimeleri kullandığı bu şekilde tespit edilmiştir. Elde edilen bu veriler ışığında AEK dizininde bulunan “Konu” (Subject) alanı içinde anahtar kelimelerde iyileştirmeler gerçekleştirilmiştir. Bu çalışmalara ek olarak anahtar kelimelerde yer alan büyük-küçük harf kullanımından ve buna bağlı olarak Türkçe karakterlerden kaynaklanan sorunlar kod üzerinde yapılan güncellemeler ile giderilmiştir.</p>
+    <p>Uygulama 1 sürecinde kullanıcıların acikders.net kullanımları Google Analytics platformundan incelenmiştir. Yapılan incelemeler sonucunda kullanıcıların site içi dolaşımlarında arama motoru ile ilgili arayüze daha rahat ulaşabilmeleri için iyileştirmeler gerçekleştirilmiştir ve ek bir arama formu sitenin üst bölümüne yerleştirilmiştir.</p>
+    <h4>Birinci Aşamaya İlişkin Yorumlar</h4>
+    <p>Araştırmanın birinci aşamasında tasarlanan üst veri modelinin mümkün olan en geniş kapsamdaki AEK tanımlamalarında kullanılması hedeflenmiştir. Bu üst veri modeli, tüm AEK üst veri modeli çalışmaları için temel teşkil edecek niteliktedir. Farklı yapıdaki AEK için (örneğin sadece videolardan oluşan) üst veri modelleri tasarlanırken mevcut tasarıma eklemeler ya da çıkarmalar yapılabilir. Bu eklemeler ya da çıkarmalar üst veri mimarisinin genişletilebilir olması sayesinde teknik olarak herhangi bir soruna yol açmaz ve üst veri modeline uygun şemaların yayınlanması ile farklı sistemler arası (arama motorları, harmanlama sistemleri vb.) birlikte çalışabilirlik de mümkün hale gelir.</p>
+    <p>Platform ile ilgili kullanıcı görüşleri genel olarak olumludur, ancak iki noktada kullanıcıların sorun yaşadığı tespit edilmiştir. Bu sorunların daha çok üzerinde çalışılan veri tabanında dizinlenen AEK yelpazesinin kısıtlı oluşundan kaynaklandığı gözlenmiştir. Veri tabanında sadece 200 AEK yer alması öğrencilerin arama sonucunda AEK erişimini sınırlandırmıştır. Bu uygulamanın daha geniş kapsamlı (yüzlerce konuda, binlerce AEK’nın yer aldığı) bir platformda farklı sonuçlar vereceği değerlendirilmektedir. Ayrıca, bazı öğrencilerin arama sonucunda hiçbir kaynağa erişemediği tespit edilmiştir. Bu durum AEK’nın sınırlı olmasına ek olarak uygun anahtar kelime seçiminde yaşanan sorunları da ortaya koymuştur. Bu süreçte öğrencilerin bilgi okuryazarlığı açısından yetkinliklerinin doğru kaynağa ulaşma konusunda en az sistem tasarımı kadar önemli olduğu gözlenmiştir.</p>
+    <h3>İkinci Aşamaya İlişkin Bulgular</h3>
+    <p>Üst veri modelinin oluşturulması sonrası dizinleme işlemi tamamlanan AEK veri tabanı üzerinde standart sorgulama işlemleri kullanıcılar tarafından belirlenen anahtar kelimeler yardımıyla gerçekleştirilmektedir. Araştırmanın birinci aşamasında gerçekleştirilen çalışmalarda, arama performansının büyük ölçüde dizinleme işlemi sırasında girilen üst verilerin içeriği ne ölçüde yansıttığına ve kullanıcı tarafından belirlenen anahtar kelimelere bağlı olduğu görülmektedir. Arama performansını artırmanın yollarından biri AEK üst verilerini gözden geçirerek özellikle “konu” alanındaki tanımlamaları (anahtar kelimeleri) iyileştirmektir. Uygulama 1 sonrası bu iyileştirmeler dizin üzerinde gerçekleştirilmiştir. Bu etkili fakat aynı zamanda maliyeti yüksek bir yöntemdir. Veri tabanı üzerindeki kayıt sayısı arttıkça önceden girilmiş olan üst veri tanımlamaları üzerinde iyileştirmeler yapmak zorlaşmaktadır. Binlerce kaydın dizinlendiği bir arama motorunda konu uzmanlarının tanımlamalar üzerinde elle iyileştirmeler yapması verimli değildir. İzlenebilecek diğer bir yol ise kullanıcının girdiği anahtar kelimelere odaklanarak arama performansını arttırmaktır.</p>
+    <p>Araştırmanın 2. aşamasında, acikders.net üzerinde oluşturulmuş olan AEK dizini içindeki konu alanında bulunan anahtar kelimelerden (makine öğrenmesi algoritmasından yararlanılarak) otomatik olarak ilgili olabilecek başka anahtar kelimeler üretilmekte ve sistem tarafından üretilen yeni anahtar kelimeler AEK ile ilgili önerilerin listelenmesinde kullanılmaktadır (Görsel 18).</p>
+    <p><img src="img/gorsel_18.png" width="800"></p>
+    <p>Görsel 18. acikders.net Tarafından Otomatik Olarak Oluşturulan Yeni Anahtar Kelimeler.</p>
+    <p>Şekil 10’da AEK veri tabanında arama yapılması için örnek olarak seçilen “grafik” anahtar kelimesi ile ilgili olarak sistem tarafından otomatik olarak üretilmiş yeni anahtar kelimeler ekranın sağ tarafından görüntülenmektedir. Sistem makine öğrenmesi algoritması yardımıyla “grafik” anahtar kelimesinden aşağıda listelenen yeni anahtar kelimeleri oluşturmuştur:</p>
+    <ul>
+      <li>grafikler,</li>
+      <li>tasarım,</li>
+      <li>multimedya,</li>
+      <li>grafikleri,</li>
+      <li>raster,</li>
+      <li>görsel,</li>
+      <li>barkod,</li>
+      <li>fotoğraf,</li>
+      <li>arayüz,</li>
+      <li>tipografi.</li>
+    </ul>
+    <p>Oluşturulan yeni anahtar kelimeler ile AEK veri tabanında yeni bir sorgu çalıştırılmaktadır ve sonuçlar “acikders.net öneriyor…” başlığı altında listelenerek kullanıcının beğenisine sunulmaktadır (Görsel 19).</p>
+    <p><img src="img/gorsel_19.png"></p>
+    <p>Görsel 19. acikders.net Tarafından Sunulan Öneri Listesi</p>
+    <h4>Makine Öğrenmesi Algoritması Olarak Word2Vec</h4>
+    <p>Araştırmanın ikinci aşamasında yeni anahtar kelimelerin oluşturulmasını sağlayan makine öğrenmesi algoritması, Word2Vec olarak adlandırılan ve kelimelerin vektör uzayında birbirlerine olan uzaklıklarını belirleyebildiğimiz bir algoritmadır. Word2Vec, bilgisayar biliminde doğal dil işleme olarak ifade edilen çalışma alanında kullanılan bir teknik olarak da ifade edilebilir. Geniş bir derlem içindeki kelimeler arası anlamsal benzerlikleri vektörler aracılığıyla tanımlama imkânı sağlayan bir yapıya sahiptir. Word2Vec algoritması 2013 yılında Google çalışanı Tomas Mikolov önderliğindeki bir grup araştırmacı tarafından yaratılmıştır (Mikolov ve diğerleri, 2013).</p>
+    <h4>Öğrenme Verisi Olarak Wikipedia Türkçe (Vikipedi) Derlemi</h4>
+    <p>Makine öğrenmesi doğası gereği öğrenme verisine ihtiyaç duyar. Öğrenme verisi ne kadar büyükse tahmin sonuçları bir o kadar isabetli olur. Bu araştırmada öğrenme verisi olarak Wikipedia’nın Türkçe makalelerinden oluşturulan derlem kullanılmıştır. 22 Mayıs 2021 tarihinde Wikipedia’da yer alan Türkçe makalelerin tamamı indirilmiş, toplam 50 kelimenin altında yer alan makaleler derlem dışı bırakılmış ve 293.887 makalenin her biri tek bir satırda yer alacak şekilde bir metin dokümanı oluşturulmuştur. Oluşturulan doküman noktalama işaretlerinden ve bağlaçlardan arındırılarak Word2Vec algoritması için model oluşturmaya uygun hale getirilmiştir.</p>
+    <h4>Python Kütüphanesi Gensim</h4>
+    <p>Word2Vec modelinin oluşturulmasında ve algoritmanın çalıştırılmasında açık kaynak kodlu olan ve Python programlama dili üzerinde çalışan Gensim kütüphanesi kullanılmıştır (Gensim: Topic Modelling for Humans, t.y.). Adını “Generate Similar” (benzerini oluştur) kelimelerinin birleşiminden alan Gensim, 2008'de Çek Dijital Matematik Kütüphanesi’nde gerçekleştirilen bir proje için geliştirilmeye başlanmıştır. Belirli bir makaleye en çok benzeyen matematik makalelerinin kısa bir listesini oluşturma amacını güden bu Python betiği zamanla doğal dil işleme alanındaki farklı teknikleri de içinde barındıran bir kütüphaneye dönüşmüştür (Rehurek ve Sojka, 2010).</p>
+    <h4>Uygulama 2: Arama Performansının Değerlendirilmesi</h4>
+    <p>Araştırmanın ikinci bölümünü oluşturan, makine öğrenmesi algoritmalarından faydalanarak arama performansının etkinliğinin arttırılması ile ilgili kullanıcılardan geri bildirim alabilmek için gerçekleştirilen “Uygulama 2”, Ankara Üniversitesi ve Hacettepe Üniversitesi’nden toplam 51 öğrenciye uygulanmıştır. (Birden fazla uygulama yapan öğrenciler bulunmaktadır, toplam cevap sayısı 57’dir).</p>
+    <p>Uygulama 2’de çevrimiçi anket formu aracılığıyla kullanıcılardan hem arama sonucunda sistem tarafından otomatik olarak oluşturulan ipucu bölümünü değerlendirmeleri istenmiş hem de yaptıkları aramada öneri olarak listelenen sonuçlardan tatmin olup olmadıkları sorulmuştur.</p>
+    <p>Uygulama 2 değerlendirme formundan alınan veriler analiz edildiğinde:</p>
+    <ul>
+    <li>“Arama motorunda yaptığınız arama sonucunda ekranın sağ tarafında yer alan ‘Aramanız ile ilgili ipuçları’ bölümü size yardımcı oldu mu? (Hiç yardımcı olmadı 1 - 5 Çok yardımcı oldu)” sorusuna verilen cevapların ortalaması 3,87’dir. (Şekil 7)</li>
+      <p><img src="img/sekil_07.png" width="600"></p>
+      <p>Şekil 7. Arama İpuçlarının Değerlendirilmesi.</p>
+    <li>“Listelenen sonuçların devamında yer alan (ipucu bölümünden yönlendirilen) ‘acikders.net öneriyor…’ bölümünde listelenen sonuçlar beklentilerinizi ne ölçüde karşıladı? (Beklentilerimi karşılamadı 1 - 5 Beklentilerimi karşıladı)” sorusuna verilen cevapların ortalaması 3,77’dir (Şekil 8).</li>
+      <p><img src="img/sekil_08.png" width="600"></p>
+      <p>Şekil 8. Listelenen Önerilerin Değerlendirilmesi.</p>
+    <li>“‘acikders.net öneriyor…’ bölümünde listelenen sonuçların beklentilerinizi neden karşıladığı ya da neden karşılamadığı ile ilgili olarak genel görüşlerinizi paylaşınız.” açık uçlu maddesine verilen cevaplar konusal olarak aşağıdaki ana başlıklar altında sınıflandırılmıştır:</li>
+      <ul>
+        <li>Öneriler beklentilerimi karşılamadı, alakasız sonuçlar getirdi.</li>
+        <li>Öneriler beklentilerimi fazlasıyla karşıladı, önerilerde kullanılan ek anahtar kelimeler konuya farklı açılardan bakmamı da sağladı.</li>
+        <li>Öneriler beklentilerimi karşıladı, ancak daha fazla sonucun listelenmesi daha iyi olabilirdi.</li>
+      </ul>
+    </ul>
+    <h4>Uygulama 2’den Elde Edilen Veriler Işığında Sistemin İyileştirilmesi</h4>
+    <p>Uygulama 2’de kullanıcılardan Uygulama 1’de olduğu gibi önceden belirlenmiş alanlarda acikders.net AEK veri tabanında arama yapmaları istenmiştir. 2. uygulamada da aramada kullanılan anahtar kelimeler uygulama sırasında toplamıştır ve hangi konular için hangi anahtar kelimelerin kullanıldığı tespit edilmiştir. Elde edilen bu veriler ışığında AEK dizininde bulunan “Konu” (Subject) alanı içinde tanımlanmış olan anahtar kelimelerde ek iyileştirmeler gerçekleştirilmiştir. Buna ek olarak aramalarda kullanılan anahtar kelimeler makine öğrenmesi algoritmasının farklı öğrenme kombinasyonları üzerinde araştırmacı tarafından yeniden test edilmiştir. Bu testler sırasında makine öğrenmesi algoritması parametreleri için sistem altyapı özellikleri de göz önünde bulundurularak en uygun kombinasyonun belirlenmesi sağlanmıştır.</p>
+    <p>Uygulama 2 sürecine hazırlık aşamasında sunucu üzerinde gerçekleştirilen sorgularda cevap süresinin optimizasyonu için Google Analytics üzerinden alınan sunucu istatistiklerinden yararlanılmıştır. Buna ek olarak makine öğrenmesi algoritmasında öğrenme tekrar sayısının belirlenmesinde yine sunucu istatistikleri belirleyici olmuştur.</p>
+    <h4>İkinci Aşamaya İlişkin Yorumlar</h4>
+    <p>İkinci uygulama sonrasında da genel anlamda olumlu dönütler alınmıştır. Ancak az sayıda da olsa sorun bildiren kullanıcılar olmuş, arama sonuçlarının beklentilerini karşılamadığını dile getirmişlerdir. Bu duruma daha önce belirtilen sınırlı sayıda kaynağın veri tabanında dizinlenmiş olmasının yol açabileceği düşünülmektedir. Diğer yandan kullanıcıların anahtar kelimeler seçimlerinin de bu duruma yol açabileceği değerlendirilmektedir.</p>
+    <p>Olumlu görüş bildiren kullanıcılar ise “Aramanız ile ilgili ipuçları!” kısmından memnun kaldıklarını, önerilen ek anahtar kelimelerin kendilerine farklı bakış açıları kazandırdığını belirtmişlerdir ki bu da çalışmanın istenen amacına ulaştığını göstermektedir. Bu tür sınırlı kaynak ve veri üzerinde yapılan çalışmalarda tüm katılımcıların beklentilerini en üst düzeyde karşılamak ve herkesi tatmin edecek bir kullanıcı deneyimi sunmak mümkün olmamaktadır. Bununla birlikte uygulama sonuçları, farklı veri setleri ve makine öğrenmesi ile desteklenmiş bir arama sürecinin kullanıcılar açısından daha yararlı olabileceğini ve daha doğru bir kaynağa, daha kısa sürede ulaşabileceklerini göstermektedir.</p>
+    <h1>Bölüm 5</h1>
+    <h2>Sonuçlar ve Öneriler</h2>
+    <p>Açık Eğitim Kaynakları ile ilgili süreç dünyada ve Türkiye’de çok yakın bir geçmişe dayanmaktadır. Özellikle 2000 yılından itibaren dünyada örnekleri görülmeye başlayan AEK, ülkemizde 2007 yılında gerçekleştirilen TÜBA açık ders malzemesi projesi ile adından söz ettirmeye başlamıştır (TÜBA Ulusal Açık Ders Malzemeleri Projesi, t.y.). İlk yıllarda sayıları ve kapsamı sınırlı olan AEK girişimleri kısa süre içerisinde yoğun ilgi ve destek görerek hızlı bir artış göstermiştir. Bu hızlı artışın temelinde yatan en önemli sebep, AEK girişimlerinin gerek formal eğitim sonrası ortaya çıkan hayat boyu öğrenme gereksinimlerini karşılayabilecek gerekse de formal eğitim süreçlerini destekleyecek bir nitelikte olmasıdır. AEK gelişim sürecinin ilk yıllarında kaynak sayısının az ve içerik açısından dar bir yelpazede oluşu temel bir sorunken, günümüzde çok sayıda kaynağın içerisinden ihtiyaç duyulan kaynağa erişim daha büyük bir sorun haline gelmiştir. Bu soruna çözüm üretmek için paylaşım kültürünün en önemli destekçisi olarak ifade edilen “Açık Hareketi” açılımı ile ortaya çıkan “Açık Eğitim Kaynakları” olgusu, “Bilgi Erişim” ve “Performans Teknolojisi” kuramları bağlamında ele alınmıştır. Öğrenenlerin kolay bir şekilde doğru kaynağa erişebilmesi için yapılandırılmış bir dizinleme altyapısının gerekliliği ortaya konulmuş, bu amaca hizmet edecek bir “üst veri modeli” geliştirilmiştir.</p>
+    <p>Tasarım-tabanlı olarak yürütülen ve iki aşamadan oluşan bu araştırmada ilk olarak üst veri modelinin nasıl tasarlanması gerektiğine ilişkin araştırmaya dayalı kuramsal ve kavramsal çerçeveler ele alınarak, taslak bir “üst veri modeli” ortaya konulmuştur. Araştırma kapsamındaki tüm çalışmaların Web tabanlı olarak yürütülebilmesi için acikders.net adlı platform geliştirilmiştir. Örneklem olarak seçilen iki farklı açık eğitim kaynağı platformunda yer alan tüm dersler oluşturulan üst veri modeline göre acikders.net içinde yer alan veri tabanında dizinlenmiştir. Öğrenenlerin platform üzerinde gerçekleştirdikleri uygulamalardan elde edilen veriler analiz edilerek acikders.net’i oluşturan bileşenler (veri tabanı, veri tabanı kayıtları, arama algoritması, arama sonuçlarının gösterimi ve makine öğrenmesi algoritması) üzerinde iyileştirmeler ve güncellemeler yapılmıştır.</p>
+    <h3>Sonuçlar</h3>
+    <p>Araştırmanın temel amacı öğrenenlerin açık eğitim kaynaklarına daha etkili şekilde erişimini sağlayacak bir semantik üst veri modeli geliştirilmesidir. Dijital ortamdaki her türlü kaynağa erişimde belge ile ilgili bilgiler yapılandırılmış alanlar içerisinde tanımlanarak bilgi erişim açısından elverişli bir ortamın oluşturulmasında kullanılır (Buckland, 1991). Bu yapılandırılmış alanlar içinde yer alan veriler üst veri olarak ifade edilir ve bilgi erişim alt yapısının temelini oluşturur.  İnternet üzerinden erişime sunulan ve Web teknolojileri yardımıyla hizmet veren platformlar için belirlenmiş üst veri standartları bulunmaktadır. Bu standartlar bilgi erişimin teknik boyutunu oluşturmaktadırlar. Farklı disiplinler için aynı teknik standartlar kullanılmasına rağmen içerik bağlamındaki ayrışımdan dolayı farkı üst veri modelleri kullanılmaktadır.</p>
+    <h4>Semantik Üst Veri Modeli Tasarımı ve Performans Değerlendirmesi</h4>
+    <p>Araştırmanın birinci aşamasında AEK için kullanılacak üst veri modeli tasarlanmıştır. 16 ifadeden oluşan üst veri modelinde özellikle bilimsel yayınların üst verilerinin oluşturulmasında kullanılan DCMI ve AEK için başlatılan üst veri girişimi LRMI ifadeleri temel alınmış ve açık lisansların kullanımı da CC lisans ailesinin entegre edilmesi ile sağlanmıştır. Üst veri model tasarımı ile ilgili uzman görüşlerine başvurulmuş, kullanıcılar tarafından test edilebilmesi için acikders.net adlı bir platform geliştirilerek üzerinde uygulamalar gerçekleştirilmiştir.</p>
+    <p>acikders.net üzerinde gerçekleştirilen ilk uygulamada, kullanıcıların platform ile ilgili görüşleri dört ana başlık altında alınmıştır:</p>
+    <ol>
+      <li>Arama motoru arayüzü kullanım kolaylığı.</li>
+      <li>Arama motoru arayüzü görsel tasarım.</li>
+      <li>Listelenen sonuçlardaki özet bilginin yeterli olup olmadığı.</li>
+      <li>Listelenen sonuçların beklentileri ne ölçüde karşıladığı.</li>
+    </ol>
+    <p>Görüşler analiz edildiğinde arama motorunun kullanımı kolay bir yapıda olduğu ve sade bir görsel tasarım tercih edilmesinin buna pozitif anlamda katkı sağladığı sonucuna ulaşılmıştır. Listelenen sonuçlardaki özet bilginin ilgili AEK için yeterli ön bilgiyi sağladığı da tespit edilmiştir. Kullanıcıların büyük çoğunluğu listelenen arama sonuçlarının beklentilerini karşıladığını ifade etmiştir. Uygulama sonrası alınan görüşler detaylı bir şekilde incelenmiş ve sistemin iyileştirilmesi için geri bildirim olarak kullanılmıştır.</p>
+    <h4>Arama Motoru Tasarımı ve Performans Değerlendirilmesi</h4>
+    <p>Araştırmanın ikinci aşamasını AEK erişim performansını arttırmaya yönelik öneriler listesinin arama motoru sonuçlarına eklenmesi oluşturmaktadır. Bu aşamada arama için girilen anahtar kelimeler makine öğrenmesi algoritması Word2Vec tarafından işlenmekte ve bu anahtar kelimelere anlamsal olarak yakınlığı bulunan yeni anahtar kelimeler oluşturulmaktadır.  Oluşturulan yeni anahtar kelimeler ile gerçekleştirilen sorgulama sonucunda kullanıcılara “Aramanız ile ilgili ipuçları!” başlığı altında yeni anahtar kelimeler ve “acikders.net öneriyor” başlığı altında önerilen AEK listesi sunulmaktadır. Platforma bu özellikler eklendikten sonra ikinci bir uygulama gerçekleştirilmiş ve katılımcılardan arama ipuçlarını ve listelenen önerileri değerlendirmeleri istenmiştir. Kullanıcılardan yeni özellikler ile ilgili görüşler iki ana başlık altında alınmıştır:</p>
+    <ol>
+      <li>Arama ile ilgili ipuçlarının ne ölçüde yardımcı olduğu.</li>
+      <li>Önerilen AEK listesinin ne ölçüde beklentileri karşıladığı.</li>
+    </ol>
+    <p>Görüşler analiz edildiğinde kullanıcıların büyük çoğunluğunun makine öğrenmesi algoritması tarafından oluşturulan ipuçlarını çok yardımcı bulduğu tespit edilmiştir.  Yine kullanıcıların büyük çoğunluğu önerilen AEK listesinin beklentilerini karşıladığını belirtmiştir.  İkinci uygulama sonrası alınan görüşler de detaylı bir şekilde incelenmiş ve sistemin iyileştirilmesi için geri bildirim olarak kullanılmıştır.</p>
+    <p>Alanyazında yapılan taramalar sonucunda erişilen AEK ile ilgili üst veri çalışmalarında genelde yaygın ve kabul görmüş bir üst veri modelinin olmayışı önemli bir eksiklik olarak belirtilmiştir (Barker ve Campbell 2015). Bu araştırma kapsamında tasarlanan üst veri modelinin bu eksikliği giderecek nitelikte olması gerek sahadaki uygulamalar açısından gerekse de bu alanda yapılan çalışmalar için alt yapı sağlaması açısından önemlidir.</p>
+    <p>Araştırma kapsamında tasarlanan semantik üst veri modeli ve geliştirilen acikders.net platformu AEK’nın üretim süreci sonunda kolay erişilebilmesi için gerekli olan alt yapıyı öğrenme yönetim sistemi ve içerik yönetim sistemi geliştirenlere sağlamaktadır. Tasarlanan semantik üst veri modeli farklı sistemler içerisinde dizinleme çalışmalarına temel teşkil edecek veri tabanları için veri şeması olarak kullanılabilecektir. Buna ek olarak herhangi bir AEK’na erişim sağlamak isteyen bir öğrenen ya da öğreten için model içerisinde yer alan üst veri ifadeleri ve buna bağlı alanlar arama kriteri olarak kullanılabilecektir. Örneğin “İçerik” başlığı altında kaynak tipi “Etkileşimli Kaynak” olan, “Eğitsel Kullanım” başlığı altında “Bireysel öğrenme” kriterini karşılayan ya da belirli bir açık lisans ile lisanslanmış bir AEK’ya erişebilmek için bu kriterler arama motorunda anahtar olarak kullanılabilir.  Bu süreci yaygın olarak kullanılan öğrenme yönetim sistemlerinden Moodle üzerinde geliştirilebilecek bir eklenti ile örneklendirebiliriz (Moodle Plugins Directory, t.y.). AEK ile ilgili üst veriler kaynağın Moodle’a yüklenmesi ya da Moodle içerisinde oluşturulması sırasında sistem içinde tanımlanabilir ve son kullanıcılar tarafından bu üst veriler arama kriteri olarak kullanılabilir. Geliştirilen bu sistem AEK ve üst veri ile ilgili farklı araştırmalar için bir başlangıç noktası olabilir. Bu bağlamdaki değerlendirmelere öneriler bölümünde yer verilmiştir.</p>
+    <h3>Öneriler</h3>
+    <p>Araştırmanın bulgularına dayalı olarak ve sonuçlar göz önüne alındığında aşağıda belirtilen önerilerin bu alanda yapılacak çalışmalara faydalı olacağı düşünülmektedir. Bu kapsamda öneriler eğitimciler ve uygulama geliştiriciler için iki ayrı kategoride verilmiştir.</p>
+    <h4>Eğitimciler için Öneriler:</h4>
+    <ol>
+      <li>Dijital içerik ekosistemi ile ilgili yapılan araştırmalarda AEK platformları ile ilgili en önemli eksikliklerden birinin arama altyapısı olduğu belirtilmiştir (Üstün ve diğerleri, 2021). Bu açıdan eğitim faaliyetlerinde kullanılacak bilgi sistemlerinde (öğrenme yönetim sistemleri, içerik yönetim sistemleri ve kaynakların depolandığı arşivler) AEK üst verilerinin tanımlanabileceği bir altyapı desteği aranabilir. Bilgi sistemlerinin seçiminde bu özelliği destekleyen bir platform tercih edilebilir.</li>
+      <li>Araştırma kapsamında gerçekleştirilen uygulamalarda katılımcılar AEK’na erişimde arama motorundan ve öneri sisteminden fayda gördüklerini belirtmişlerdir. Bu doğrultuda özellikle yüksek sayıda AEK’nın yer aldığı bilgi sistemlerinde (ör: YÖK Dersleri Platformu vb.) kaynağa erişimi kolaylaştıracak (üst veri modelinde yer alan şemaya dayalı) arama altyapısının ve öneri sistemlerinin yer alması istenebilir.</li>
+      <li>AEK üst verilerinin sonradan oluşturulması sırasında ortaya çıkan iş yükü ve konu uzmanı ihtiyacı araştırma kapsamında gerçekleştirilen dizinleme çalışmaları sırasında tespit edilmiştir. Bu sonuç dikkate alınarak kaynak dizinleme işlemleri için ihtiyaç duyulan üst verinin AEK geliştiren eğitimciler tarafından oluşturulması sağlanabilir.</li>
+    </ol>
+    <h4>Uygulama Geliştiriciler için Öneriler:</h4>
+    <ol>
+      <li>AEK üst veri modeli tasarımına ihtiyaçlar doğrultusunda eklemeler ya da çıkarmalar yapılabilir. Dizinlenecek AEK’nın sahip olduğu özellikler dikkate alınarak yeni ifadelerin eklenmesi arama performansını olumlu yönde etkileyebilir. Örneğin sadece videolardan oluşan bir AEK üst veri modelinde videonun süresi bir üst veri ifadesi olarak model içinde yer alabilir ve arama kriterleri içinde kullanılabilir.</li>
+      <li>AEK üst veri modelinin şemasına göre yapılandırılmış bir harmanlama sistemi tasarlanabilir. Bu harmanlama sistemi Web üzerinde bu şemaya uygun açık eğitim kaynaklarını otomatik olarak dizinleyerek arama motorları için gerekli veri setini oluşturabilir.</li>
+      <li>Arama sonuçlarının listelenmesinde üst veri modelini oluşturan alanlara farklı ağırlıklar atanarak AEK sıralamaları yeniden düzenlenebilir. Bu ağırlıkların farklı kombinasyonları değişik arama algoritmalarının oluşturulmasında kullanılabilir.</li>
+      <li>Makine öğrenmesi algoritması Word2Vec için Vikipedi makaleleri haricinde farklı bir öğrenme verisi kaynak olarak kullanılabilir. Özellikle belirli bir konuya odaklanmış AEK için o konudaki metinlerin ağırlıkta olduğu bir derlemin kullanılması arama performansına olumlu etkileyebilir. Örneğin tıp alanındaki AEK yer aldığı bir sistemde açık erişimdeki tıp makalelerinden oluşturulacak bir derlem öğrenme verisi olarak kullanılabilir.</li>
+      <li>Makine öğrenmesi sürecinde Word2Vec harici bir başka algoritma anlamsal bağlantıların kurulması amacıyla kullanılabilir. Kullanılacak yeni algoritma ile mevcut yapı karşılaştırılarak optimizasyon çalışmaları gerçekleştirilebilir.</li>
+    </ol>
+    <h2>Kaynaklar</h2>
+    <p>Abaci, S. (2015). Introduction to “Human Performance Technology: Research and Theory to Practice”. Perf. Improv., 54: 34-35. https://doi.org/10.1002/pfi.21467</p>
+    <p>About CC Licenses. (2019). Creative Commons içinde. Erişim adresi: https://creativecommons.org/about/cclicenses/</p>
+    <p>Accessibility Tags. (2019, 26 Kasım). OER Commons Help Center içinde. Erişim adresi: https://help.oercommons.org/support/solutions/articles/42000060556-accessibility-tags</p>
+    <p>Alhaag, A. A., Savic, G., Milosavljevic, G., Segedinac, M. T., & Filipovic, M. (2018). Executable platform for managing customizable metadata of educational resources. The Electronic Library.</p>
+    <p>Alupoaie, S., & Cunningham, P. (2013). Using tf-idf as an edge weighting scheme in user-object bipartite networks. arXiv preprint arXiv:1308.6118.</p>
+    <p>AWS: Amazon Web Services. Erişim adresi (2017, 15 Mart): https://aws.amazon.com/</p>
+    <p>Baeza-Yates, R. ve Riberto-Neto, B. (1999). Modern Information Retrieval. Essex: Pearson Education Limited.</p>
+    <p>Baeza-Yates, R. ve Riberto-Neto, B. (2011). Modern Information Retrieval: The Concepts and Technology behind Search, 2nd Edition. Addison Wesley.</p>
+    <p>Barker, P., & Campbell, L. M. (2015, May). LRMI, Learning resource metadata on the web. In Proceedings of the 24th International Conference on World Wide Web (pp. 687-687).</p>
+    <p>Baş, T., Akturan, U. (2013). Nitel Araştırma Yöntemleri. İstanbul: Seçkin Yayıncılık.</p>
+    <p>Berners-Lee, T., Cailliau, R., Groff, J. ve Pollermann, B. (2010). World-wide web: the information universe. Internet Research, 20(4), 461-469.</p>
+    <p>Berners-Lee, T., Hendler, J. ve Lassila, O. (2001). The Semantic Web - A new form of Web content that is meaningful to computers will unleash a revolution of new possibilities. Scientific American, 284(5), 34-+.</p>
+    <p>Blair, David C. (1990). Language and representation in information retrieval. Amsterdam: Elsevier.</p>
+    <p>Bozkurt, A., Uçar, H., Kurşun, E., Kayaduman, H. ve Üstün, A.G. (2020). Yükseköğretimde Eğitsel İçeriklerin Sunumu için Dijital İçerik Ekosistemi Gereksinimlerinin Belirlenmesi (Proje No. TÜBİTAK SOBAG 1001 120K256. TÜBİTAK, ULAKBİM, TRDİZİN web sitesinden erişilen adres: https://app.trdizin.gov.tr/proje/TWpFME16YzM/yuksekogretimde-egitsel-iceriklerin-sunumu-icin-dijital-icerik-ekosistemi-gereksinimlerinin-belirlenmesi</p>
+    <p>Buckland, M. (1991). Information and information systems. New York: Praeger.</p>
+    <p>Büyüköztürk, Ş., Kılıç-Çakmak, E., Akgün, Ö. E., Karadeniz, Ş. ve Demirel, F. (2008). Bilimsel araştırma yöntemleri. Ankara: Pegem Yayınları.</p>
+    <p>Creative Commons Türkiye (t.y.). Creative Commons Hakkında. Erişim adresi: https://creativecommons.org.tr/hakkinda/</p>
+    <p>CC REL. (2018, 1 Şubat). Creative Commons Wiki içinde. Erişim adresi: https://wiki.creativecommons.org/wiki/CC_REL</p>
+    <p>de Deus, W. S., & Barbosa, E. F. (2020, July). The Use of Metadata in Open Educational Resources Repositories: An Exploratory Study. In 2020 IEEE 44th Annual Computers, Software, and Applications Conference (COMPSAC) (pp. 123-132). IEEE.</p>
+    <p>DCMI Type Vocabulary. (2020, 20 Ocak). DCMI Metadata Terms içinde. Erişim adresi: https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-7</p>
+    <p>Dublin Core Metadata Initiative. (t.y.). Erişim adresi: http://dublincore.org/</p>
+    <p>Dublin Core Metadata Initiative. (t.y.). DCMI Metadata Terms. Erişim adresi: http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/</p>
+    <p>Dublin Core Metadata Initiative. (t.y.). LRMI Task Group. Erişim Adresi: https://www.dublincore.org/groups/lrmi-task-group/</p>
+    <p>Dublin Core Metadata Initiative. (t.y.). LRMI Terms. Erişim Adresi: https://www.dublincore.org/specifications/lrmi/lrmi_terms/2020-11-12/</p>
+    <p>Durán, C. G., & Ramírez, C. M. (2021). Integration of open educational resources using semantic platform. IEEE Access, 9, 93079-93088.</p>
+    <p>Education Levels. (2018, 12 Kasım). OER Commons Help Center içinde. Erişim adresi: https://help.oercommons.org/support/solutions/articles/42000046905-education-levels</p>
+    <p>Gensim: Topic Modelling for Humans. (t.y.). Erişim adresi: https://radimrehurek.com/gensim/</p>
+    <p>Google I/O 2018. (t.y.). Erişim adresi: https://events.google.com/io2018/</p>
+    <p>Google I/O 2019. (t.y.). Erişim adresi: https://events.google.com/io2019/</p>
+    <p>Google Cloud (t.y.). Compute Engine. Erişim Adresi: https://cloud.google.com/compute/</p>
+    <p>Göker, A. ve Davies, J. (2009). Information Retrieval: Searching in the 21st Century. Chichester: Wiley.</p>
+    <p>Gülbahar, Y., Kalelioğlu, F. ve Madran, R. O. (2010). Sosyal Ağların Eğitim Amaçlı Kullanımı. inet-tr 2010 Türkiye’de İnternet Konferansı. İstanbul: İstanbul Teknik Üniversitesi.</p>
+    <p>Güler, Ç. (2010). Öğrenme Nesnesi Tasarım ve Geliştirme Süreci: Bir Tasarım Tabanlı Araştırma Örneği (Yayımlanmamış doktora tezi). Hacettepe Üniversitesi, Ankara.</p>
+    <p>History of the Web. (t.y.). Erişim adresi: http://webfoundation.org/about/vision/history-of-the-web/</p>
+    <p>How Google Search Works. (t.y.). Erişim adresi: https://www.google.com/search/howsearchworks/</p>
+    <p>IEEE LOM (2002). IEEE Standard for Learning Object Metadata. Erişim Adresi: https://standards.ieee.org/ieee/1484.12.1/3294/</p>
+    <p>International Society for Performance Improvement. (t.y.) Erişim Adresi: https://ispi.org/</p>
+    <p>Jambhulkar, S. V. ve Karale, S. J. (2016). "Semantic web application generation using Protégé tool," 2016 Online International Conference on Green Engineering and Technologies (IC-GET), Coimbatore, India, 2016, pp. 1-5.</p>
+    <p>Kuzu, A., Çankaya, S., Mısırlı, Z. (2011). Tasarım Tabanlı Araştırma ve Öğrenme Ortamlarının Tasarımı ve Geliştirilmesinde Kullanımı. Anadolu Journal Of Educational Sciences International, 1(1), 19-35. Erişim Adresi: https://dergipark.org.tr/tr/pub/ajesi/issue/1525/18728</p>
+    <p>Learning Resource Metadata Initiative. (t.y.). About LRMI.  Erişim Adresi: http://lrmi.dublincore.net/about/</p>
+    <p>Learning Resource Metadata Initiative. (t.y.). LRMI Version 1.1.  Erişim Adresi: https://www.dublincore.org/specifications/lrmi/1.1/</p>
+    <p>Li, S., Yang, Z., & Liu, Q. (2008). Research of metadata based digital educational resource sharing. In 2008 International Conference on Computer Science and Software Engineering (Vol. 5, pp. 828-831). IEEE.</p>
+    <p>Madran, O. ve Holt, İ., (2019). Yaratıcılığınızı paylaşın: Açık lisanslar ve Creative Commons. Üçer Saylan, D. (Ed.), Meraklısına Bilim: Sarkaç’tan bir Seçki 2019 içinde. İstanbul: Doğan Egmont Yayıncılık.</p>
+    <p>Manning, C.D., Raghavan, P., ve Schütze, H. (2008). An Introduction to Information Retrieval. Cambridge University Press.</p>
+    <p>Maxwell J. A. (2013). Qualitative Research Design: An Interactive Approach. 3rd. Edition.  US: SAGE Publications, Inc.</p>
+    <p>Metadata. (2020, 14 Şubat). Vikipedi içinde. Erişim adresi (2 Nisan 2020): http://tr.wikipedia.org/wiki/Metadata</p>
+    <p>Microsoft Azure: Cloud Computing Platform & Services. (t.y.). Erişim adresi: https://azure.microsoft.com/</p>
+    <p>Mikolov, T., Chen, K., Corrado, G., & Dean, J. (2013). Efficient estimation of word representations in vector space. arXiv preprint arXiv:1301.3781.</p>
+    <p>Miranda, S., & Ritrovato, P. (2014). Automatic extraction of metadata from learning objects. In 2014 International Conference on Intelligent Networking and Collaborative Systems (pp. 704-709). IEEE.</p>
+    <p>MIT OCW. (t.y.). Erişim adresi: https://ocw.mit.edu/</p>
+    <p>Moodle Plugins Directory. (t.y.). Erişim adresi: https://moodle.org/plugins/</p>
+    <p>Nath, K., Dhar, S. ve Basishtha, S. (2014). Web 1.0 to Web 3.0-Evolution of the Web and its Various Challenges. Proceedings of the 2014 International Conference on Reliabilty, Optimization, & Information Technology (Icroit 2014), 86-89.</p>
+    <p>Navarrete, R., & Luján-Mora, S. (2018). Bridging the accessibility gap in Open Educational Resources. Universal Access in the Information Society, 17(4), 755-774.</p>
+    <p>Open Education (2019, 3 Kasım). Wikipedia içinde. Erişim Adresi (2020, 25 Mart): https://en.wikipedia.org/wiki/Open_education</p>
+    <p>Open Educational Resources (2020, 19 Kasım). Wikipedia içinde. Erişim Adresi (2020, 25 Mart ): https://en.wikipedia.org/wiki/Open_educational_resources</p>
+    <p>Open Archives Initiative. (t.y.) Protocol for Metadata Harvesting. Erişim adresi: https://www.openarchives.org/pmh/</p>
+    <p>Ott, N. ve Meurers, D. (2010). Information Retrieval for Education: Making Search Engines Language Aware. Themes in Science and Technology Education. Special Issue on Computer-Aided Language Analysis, Teaching and Learning: Approaches, Perspectives and Applications.</p>
+    <p>Özdemir, Ş ve Örslü, S . (2019). Makine Öğrenmesinde Yeni Bir Bakış Açısı: Otomatik Makine Öğrenmesi (AutoML). Journal of Information Systems and Management Research , 1 (1) , 23-30 .</p>
+    <p>Poulakakis, Y., Vassilakis, K., Kalogiannakis, M., & Panagiotakis, S. (2017). Ontological modeling of educational resources: a proposed implementation for Greek schools. Education and Information Technologies, 22(4), 1737-1755.</p>
+    <p>Rajabi, E., Sicilia, M. A., & Sanchez-Alonso, S. (2015). Interlinking educational resources to web of data through IEEE LOM. Computer Science and Information Systems, 12(1), 233-255.</p>
+    <p>Rehurek, R., & Sojka, P. (2010). Software framework for topic modelling with large corpora. In Proceedings of the LREC 2010 workshop on new challenges for NLP frameworks.
+    <p>Pershing, J.A. (2006). Human performance technology fundamentals. In J.A. Pershing (Ed.), Handbook of human performance technology (3rd ed., pp. 5-26). San Francisco: Pfeiffer.</p>
+    <p>Robertson, S.E. and Jones, K.S. (1976). Relevance weighting of search terms. J. Am. Soc. Inf. Sci., 27: 129-146. https://doi.org/10.1002/asi.4630270302</p>
+    <p>Salton G. ve McGill M. J. (1983). Introduction to Modern Information Retrieval. New York: McGraw-Hill Book Co.</p>
+    <p>Salton G. ve Buckley, C. (1988). Term-weighting approaches in automatic text retrieval. Information Processing & Management, 24(5), 513-523. https://doi.org/10.1016/0306-4573(88)90021-0</p>
+    <p>Savoy, J. ve Gaussier, E. (2010). Information Retrieval. Erişim Adresi: https://www.researchgate.net/publication/281886222_Information_Retrieval</p>
+    <p>Shadbolt, N., Hall, W. ve Berners-Lee, T. (2006). The Semantic Web revisited. Ieee Intelligent Systems, 21(3), 96-101.</p>
+    <p>Stolovitch ,   H.D. , & Beresford ,   B. ( 2012 ). The development and evolution of human performance improvement . In R.A. Reiser & J.V. Dempsey (Eds.), Trends and issues in instructional design and technology ( 3rd ed. , pp. 135 – 146 ). Boston, MA : Pearson .</p>
+    <p>Taşkın, Z. (2019). Verinin Tanımlanması. Erişim Adresi (2020, 2 Nisan): https://acikveri.ulakbim.gov.tr/acik-veri-acik-bilim/bolum-3-veri-isleme/3-5-verinin-tanimlanmasi/</p>
+    <p>Tavakoli, M., Elias, M., Kismihok, G., & Auer, S. (2020, July). Quality prediction of open educational resources a metadata-based approach. In 2020 IEEE 20th international conference on advanced learning technologies (ICALT) (pp. 29-31). IEEE.</p>
+    <p>Tavşancıl, E. ve Aslan, E. (2001). İçerik analizi ve uygulama örnekleri. Epsilon Yayınları: İstanbul.</p>
+    <p>The Open Archives Initiative Protocol for Metadata Harvesting. (t.y.) Erişim adresi: https://www.openarchives.org/OAI/openarchivesprotocol.html</p>
+    <p>Tonta, Y. (1995). Bilgi erişim sistemleri. Türk Kütüphaneciliği, 9(3): 302-314.</p>
+    <p>Tonta, Y. (2001). "Bilgi erişim sorunu" Ed. Tülay Fenerci ve Oya Gürdal, 21. Yüzyıla Girerken Enformasyon Olgusu: Ulusal Sempozyum Bildirileri, 19-20 Nisan 2001, Hatay içinde (s. 198-206). Ankara: Türk Kütüphaneciler Derneği.</p>
+    <p>Tonta, Y. (2002). Bilgi Erişim Sorunları ve Internet". Ed. Ali Can, M. Tayfun Gülle, Oya Gürdal ve Erol Yılmaz. Kütüphanecilikte Yeni gelişmeler, Kavramlar, Olgular... 37. Kütüphane Haftası Bildirileri, 26 Mart - 01 Nisan 2001 içinde (52-62) Ankara: TKD
+    <p>Tonta, Y., Bitirim, Y. ve Sever, H. (2002). Türkçe Arama Motorlarında Performans Değerlendirme. (Performance Evaluation of Turkish Search Engines). Ankara: Total Bilişim Ltd. Şti.</p>
+    <p>Tonta Y. (2012). Bilgi sınıflama, bilgi düzenleme ve bilgi erişim. Özgür Külcü, Tolga Çakmak ve Nevzat Özel (Yay. Haz.). Prof. Dr. K. Gülbün Baydur’a armağan içinde (s. 155-172). Ankara: Hacettepe Üniversitesi Bilgi ve Belge Yönetimi Bölümü.</p>
+    <p>Tonta, Y. (2015). Açık bilim ve açık erişim. Prof. Dr. İrfan Çakın`a Armağan içinde (s. 235-250). Ankara: Hacettepe Üniversitesi Bilgi ve Belge Yönetimi Bölümü.</p>
+    <p>Tosti, D.T. (2010), RSVP: The principles of human performance technology. Perf. Improv., 49: 5-8. https://doi.org/10.1002/pfi.20153</p>
+    <p>Torres, B. P. ve González, A. G. (2017). Evolution of the Semantic Web Towards the Intelligent Web: From Conceptualization to Personalization of Contents. In F. C. Freire, X. Rúas Araújo, V. A. Martínez Fernández, & X. L. García (Eds.), Media and Metamedia Management (pp. 419-427). Cham: Springer International Publishing.</p>
+    <p>TÜBA Ulusal Açık Ders Malzemeleri Portalı. (t.y.). Erişim adresi: https://acikders.tuba.gov.tr/</p>
+    <p>TÜBA Ulusal Açık Ders Malzemeleri Projesi (t.y.) Erişim Adresi: https://www.tuba.gov.tr/tr/programlar-ve-projeler/akademi-program-ve-projeleri/acik-ders-malzemeleri-projesi</p>
+    <p>Türk Dil Kurumu Sözlükleri: Güncel Türkçe Sözlük. (t.y.). Derlem. Erişim adresi: https://sozluk.gov.tr/</p>
+    <p>Uçkan, T. , Hark, C. , Seyyarer, E. & Karcı, A. (2019). Ağırlıklandırılmış Çizgelerde Tf-Idf ve Eigen Ayrışımı Kullanarak Metin Sınıflandırma . Bitlis Eren Üniversitesi Fen Bilimleri Dergisi , 8 (4) , 1349-1362 . DOI: 10.17798/bitlisfen.531221</p>
+    <p>UNESCO Open Educational Resources. (t.y.). Erişim Adresi (2020, 23 Mart): https://en.unesco.org/themes/ict-education/oer</p>
+    <p>Üstün, A. G., Tanış, H., Kaba, E., Aksoy, D. A., Kayaduman, H., Uçar, H., Kurşun, E., & Bozkurt, A. (2021). Açık eğitsel kaynak (AEK) sunan platform bileşenlerinin incelenmesi. International Congress on Open Learning and Distance Education 2021 (ICOLDE 2021) (s. 240-248), 9-10 Ekim 2021, Erzurum Atatürk Üniversitesi – Çevrimiçi.</p>
+    <p>Van Wyk, E. ve De Villiers, M. R. R. (2014). Applying design-based research for developing virtual reality training in the South African mining industry. ACM International Conference Proceeding Series. https://doi.org/10.1145/2664591.2664627</p>
+    <p>Vickery B. C. ve Vickery A. (2004). Information Science in Theory and Practice. München: K. G. Saur Verlag GmbH.</p>
+    <p>Vimeo. (t.y.). Erişim adresi: https://www.vimeo.com/</p>
+    <p>Wang, F. ve Hannafin, M.J. (2005). Design-based research and technology-enhanced learning environments. ETR&D 53, 5–23. https://doi.org/10.1007/BF02504682</p>
+    <p>Wu, L., & Wang, H. (2010, June). Ontology-focused semantic description and retrieval of educational resources. In 2010 2nd International Conference on Education Technology and Computer (Vol. 3, pp. V3-184). IEEE.</p>
+    <p>What is Open Education. (t.y.). Erişim Adresi: https://www.openeducationweek.org/page/what-is-open-education</p>
+    <p>Yiğit, T., ve Işık, A. H. (2017). Öğrenme Nesne Ambarları İçin Zeki İçerik Yönetim Yazılım Ana Çatısı. (Proje No. TÜBİTAK EEEAG 115E600. TÜBİTAK, ULAKBİM, TRDİZİN web sitesinden erişilen adres: https://app.trdizin.gov.tr/publication/project/detail/TWpBeU1UZzQ=</p>
+    <p>YouTube. (t.y.). Erişim adresi: https://www.youtube.com/</p>
+    <p>Zykov, S. V., & Isheyemi, O. (2017). Architecting open education: the integrated metadata warehouse. In Proceedings of the 13th Central & Eastern European Software Engineering Conference in Russia (pp. 1-8). DOI: 10.1145/3166094.3166099</p>
   </div>
 </main>
 
